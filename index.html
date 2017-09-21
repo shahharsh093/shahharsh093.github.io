@@ -1,11 +1,80 @@
-<!DOCTYPE html>
+
 <html>
-<head>
-	<title>Github Test</title>
-</head>
-<body>
-<p>
-Harsh Shah
-</p>
-</body>
+	
+	<head>
+		<br><br><title>Unsubscribe from email</title>
+
+
+		<script type="text/javascript">
+     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
+ // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+ clevertap.account.push({"id": "TEST-R74-969-884Z"});
+ (function () {
+		 var wzrk = document.createElement('script');
+		 wzrk.type = 'text/javascript';
+		 wzrk.async = true;
+		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+		 var s = document.getElementsByTagName('script')[0];
+		 s.parentNode.insertBefore(wzrk, s);
+  })();
+</script>
+
+	</head>
+	
+	<body align="center">
+
+<br><br>
+	<div style="text-align: center;">
+	  <h4>I want to unsubscribe from future emails</h4>
+	  <br>
+		<input type="text" id="email" readonly="readonly"/>
+		<br/><br/>
+		<button height=20px;width:100px; margin: -20px -50px; position:relative;top:0%; left:0%;
+		onclick="unsubscribe()">Unsubscribe me</button><br/><br/>
+
+		 
+	</div>
+
+	<br><br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+
+	<input type="image" src="https://offers.freecharge.in/fclogo/FC_LOGO.png" name="fclogo">
+
+
+	<script>
+
+		// on  page load, fetch the email id of the user.
+		window.onload = function() {
+			$WZRK_WR.getEmail();
+		};
+
+    // will be called after the email id of the user has been fetched
+		function wzrk_email_fetched (emailStr) {
+			document.getElementById("email").value = emailStr;
+		}
+
+		// will be called after the subscription preferences for the user have been updated
+		function wzrk_email_subscription (status) {
+				// todo - you can show a success message to the user from here
+
+		}
+
+		// call this function to unsubscribe the user
+		function unsubscribe() {
+			$WZRK_WR.unSubEmail();
+
+			location.href = "https://offers.freecharge.in/resub/FreechargeRe.html";
+		}
+
+		// call this function to resubscribe the user
+		function resubscribe() {
+				$WZRK_WR.subEmail();
+		}
+
+
+	</script>
+
+	</body>
 </html>
