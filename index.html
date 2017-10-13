@@ -17,6 +17,15 @@
 		 var s = document.getElementsByTagName('script')[0];
 		 s.parentNode.insertBefore(wzrk, s);
   })();
+  function collectEmail(){
+	var input = document.getElementById("myInput").value;
+	console.log(""+input);
+	//console.log(""+document.getElementById("myInput").value);
+	clevertap.profile.push({
+ "Site": {
+   "Email": input, // User's name
+ }
+});
 </script>
 <script type="text/javascript">
 	function collectEmail(){
@@ -29,7 +38,6 @@
  }
 });
 	
-	//alert("The form was submitted"+email);
 	}
 </script>
 	</head>
