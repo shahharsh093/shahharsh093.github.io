@@ -18,63 +18,27 @@
 		 s.parentNode.insertBefore(wzrk, s);
   })();
 </script>
-
+<script type="text/javascript">
+	function collectEmail(){
+	var input = document.getElementById("myInput").value;
+	console.log(""+input);
+	//console.log(""+document.getElementById("myInput").value);
+	clevertap.profile.push({
+ "Site": {
+   "Email": input, // User's name
+ }
+});
+	
+	//alert("The form was submitted"+email);
+	}
+</script>
 	</head>
 	
 	<body align="center">
+		<input type="myInput" name="myInput" id="myInput"/>
+		<button onclick="collectEmail()">Submit</button>
 
-<br><br>
-	<div style="text-align: center;">
-	  <h4>I want to unsubscribe from future emails</h4>
-	  <br>
-		<input type="text" id="email" readonly="readonly"/>
-		<br/><br/>
-		<button height=20px;width:100px; margin: -20px -50px; position:relative;top:0%; left:0%;
-		onclick="unsubscribe()">Unsubscribe me</button><br/><br/>
-
-		 
-	</div>
-
-	<br><br><br><br><br><br>
-	<br>
-	<br>
-	<br>
-
-	<input type="image" src="https://offers.freecharge.in/fclogo/FC_LOGO.png" name="fclogo">
-
-
-	<script>
-
-		// on  page load, fetch the email id of the user.
-		window.onload = function() {
-			$WZRK_WR.getEmail();
-		};
-
-    // will be called after the email id of the user has been fetched
-		function wzrk_email_fetched (emailStr) {
-			document.getElementById("email").value = emailStr;
-		}
-
-		// will be called after the subscription preferences for the user have been updated
-		function wzrk_email_subscription (status) {
-				// todo - you can show a success message to the user from here
-
-		}
-
-		// call this function to unsubscribe the user
-		function unsubscribe() {
-			$WZRK_WR.unSubEmail();
-
-			location.href = "https://offers.freecharge.in/resub/FreechargeRe.html";
-		}
-
-		// call this function to resubscribe the user
-		function resubscribe() {
-				$WZRK_WR.subEmail();
-		}
-
-
-	</script>
 
 	</body>
+
 </html>
