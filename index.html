@@ -1,17 +1,35 @@
 <html>
 	
 	<head>
+  <link rel="manifest" href="/manifest.json">
 		<br><br><title>Unsubscribe from email</title>
 		<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+   
     
-  <link rel="manifest" href="/manifest.json">
+    <style type="text/css">
+      .wzrk-alert {
+        background-color: #111 !important;
+        border: 1px solid #f0f0f0;
+        font-family: Arial,sans-serif;
+        width: 346px;
+        padding: 15px 15px 5px;
+        border-radius: 6px;
+        text-align: center;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        margin-left: 0;
+        margin-top: 0;
+        overflow: hidden;
+        z-index: 99999;
+}
 
+    </style>
 
 		<script type="text/javascript">
      var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
  // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
- clevertap.account.push({"id": "TEST-R74-969-884Z"});
+ clevertap.account.push({"id": "RK6-K77-W94Z"});
  (function () {
 		 var wzrk = document.createElement('script');
 		 wzrk.type = 'text/javascript';
@@ -20,17 +38,58 @@
 		 var s = document.getElementsByTagName('script')[0];
 		 s.parentNode.insertBefore(wzrk, s);
   })();
-  clevertap.notifications.push({
+  
+
+  clevertap.profile.push({
+ "Site": {
+   "Name": "Jack Montana", // User's name
+   "Age": 1
+ }
+});
+  clevertap.profile.push({
+ "Site": {
+   "Name": "Jack Montana", // User's name
+   "Age": 2
+ }
+});
+  clevertap.profile.push({
+ "Site": {
+   "Name": "Jack Montana", // User's name
+   "Age": 3
+ }
+});
+
+
+clevertap.notificationCallback = function(msg){
+      //raise the notification viewed and clicked events in the callback
+      clevertap.raiseNotificationViewed();
+      console.log(JSON.stringify(msg));//your custom rendering implementation here
+      var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+      $button.click(function(){
+         clevertap.raiseNotificationClicked();
+      });
+};
+
+
+
+</script>
+<script id="_webengage_script_tag" type="text/javascript">
+var webengage; !function(w,e,b,n,g){function o(e,t){e[t[t.length-1]]=function(){r.__queue.push([t.join("."),arguments])}}var i,s,r=w[b],z=" ",l="init options track screen onReady".split(z),a="feedback survey notification".split(z),c="options render clear abort".split(z),p="Open Close Submit Complete View Click".split(z),u="identify login logout setAttribute".split(z);if(!r||!r.__v){for(w[b]=r={__queue:[],__v:"6.0",user:{}},i=0;i<l.length;i++)o(r,[l[i]]);for(i=0;i<a.length;i++){for(r[a[i]]={},s=0;s<c.length;s++)o(r[a[i]],[a[i],c[s]]);for(s=0;s<p.length;s++)o(r[a[i]],[a[i],"on"+p[s]])}for(i=0;i<u.length;i++)o(r.user,["user",u[i]]);setTimeout(function(){var f=e.createElement("script"),d=e.getElementById("_webengage_script_tag");f.type="text/javascript",f.async=!0,f.src=("https:"==e.location.protocol?"https://ssl.widgets.webengage.com":"http://cdn.widgets.webengage.com")+"/js/webengage-min-v-6.0.js",d.parentNode.insertBefore(f,d)})}}(window,document,"webengage");     
+
+webengage.init("8261823a");
+</script>
+	</head>
+	
+	<body align="center">
+  <script type="text/javascript">
+    clevertap.notifications.push({
     "titleText":'Would you like to receive Push Notifications?',
     "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
     "okButtonText":'Sign me up!',
     "rejectButtonText":'No thanks',
     "okButtonColor":'#f28046'});
-
-</script>
-	</head>
-	
-	<body align="center">
+  </script>
+  
 		<a href="#exampleModal">Modal trigger</a>
 
 			<!-- Button trigger modal -->
