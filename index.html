@@ -74,9 +74,13 @@ mixpanel.init("59542b07243aba2848dc2d61c9c87daf");</script><!-- end Mixpanel -->
    "Age": 3
  }
 });
+mixpanel.identify('13793');
 
 mixpanel.track("Video play");
-
+mixpanel.track(
+    "Played song",
+    {"genre": "hip-hop"}
+);
 
       function squareharsh(){
         alert("Harsh SHah square");
