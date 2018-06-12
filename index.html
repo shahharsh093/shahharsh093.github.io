@@ -53,43 +53,16 @@ mixpanel.init("59542b07243aba2848dc2d61c9c87daf");</script><!-- end Mixpanel -->
 
 		<script type="text/javascript">
      var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
- // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
- clevertap.account.push({"id": "W67-774-7Z5Z"});
- (function () {
-		 var wzrk = document.createElement('script');
-		 wzrk.type = 'text/javascript';
-		 wzrk.async = true;
-		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
-		 var s = document.getElementsByTagName('script')[0];
-		 s.parentNode.insertBefore(wzrk, s);
-  })();
-  
+     clevertap.account.push({"id": "W67-774-7Z5Z"});
+      (function () {
+    		 var wzrk = document.createElement('script');
+    		 wzrk.type = 'text/javascript';
+    		 wzrk.async = true;
+    		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+    		 var s = document.getElementsByTagName('script')[0];
+    		 s.parentNode.insertBefore(wzrk, s);
+      })();
 
-  clevertap.profile.push({
- "Site": {
-   "Name": "Jack Montana", // User's name
-   "Age": 1
- }
-});
-  clevertap.profile.push({
- "Site": {
-   "Name": "Jack Montana", // User's name
-   "Age": 2
- }
-});
-  clevertap.profile.push({
- "Site": {
-   "Name": "Jack Montana", // User's name
-   "Age": 3
- }
-});
-
-
-mixpanel.track("Video play");
-mixpanel.track(
-    "Played song",
-    {"genre": "hip-hop"}
-);
 
       function squareharsh(){
         alert("Harsh SHah square");
@@ -124,50 +97,25 @@ debug_logs: 1
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <script type="text/javascript">
-    // clevertap.notifications.push({
-    // "titleText":'Would you like to receive Push Notifications?',
-    // "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
-    // "okButtonText":'Sign me up!',
-    // "rejectButtonText":'No thanks',
-    // "okButtonColor":'#f28046'});
+    clevertap.notifications.push({
+    "titleText":'Would you like to receive Push Notifications?',
+    "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
+    "okButtonText":'Sign me up!',
+    "rejectButtonText":'No thanks',
+    "okButtonColor":'#f28046'});
   </script>
   
-		<a href="#exampleModal">Modal trigger</a>
-
-			<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+  <button onclick="showCleverTapID()">My CleverTap ID</button>
 		<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    
+    <script type="text/javascript">
+      function showCleverTapID(){
+        alert(""+clevertap.getCleverTapID());
+      };
+    </script>
 	</body>
 
 </html> -->
