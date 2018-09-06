@@ -1,7 +1,8 @@
 
 <!DOCTYPE html><html lang="en"><head><title>Unsubscribe from email</title>
       <link rel="manifest" href="manifest.json">
-<script type="text/javascript">var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
+<script type="text/javascript">
+      var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
 clevertap.account.push({"id": "W67-774-7Z5Z"});
 (function () {
     var wzrk = document.createElement('script');
@@ -13,7 +14,9 @@ clevertap.account.push({"id": "W67-774-7Z5Z"});
 })();
       console.log("Yo"+clevertap.getCleverTapID());
       clevertap.getCleverTapID();
-      </script></head><body><div><h4>I want to unsubscribe from future emails</h4><input id="email" type="text" readonly="readonly"><br><br><button onclick="unsubscribe()">Unsubscribe me</button></div><script>// on  page load, fetch the email id of the user
+      </script>
+      </head>
+      <body><div><h4>I want to unsubscribe from future emails</h4><input id="email" type="text" readonly="readonly"><br><br><button onclick="unsubscribe()">Unsubscribe me</button></div><script>// on  page load, fetch the email id of the user
 window.onload = function() {
     $WZRK_WR.getEmail();
 };
@@ -39,6 +42,6 @@ function unsubscribe() {
 function resubscribe() {
     $WZRK_WR.subEmail();
 }</script>
-      <script>console.log(""+clevertap.getCleverTapID())</script>
+      
       
       </body></html>
