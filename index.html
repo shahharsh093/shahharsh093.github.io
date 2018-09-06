@@ -42,7 +42,20 @@ function unsubscribe() {
 // call this function to resubscribe the user
 function resubscribe() {
     $WZRK_WR.subEmail();
-}</script>
+}
+            
+            clevertap.notifications.push({
+       "titleText":'Would you like to receive Push Notifications?',
+       "bodyText":"We promise to only send you relevant content and give you updates on your transactions",
+       "okButtonText":"Sign me up!",
+       "rejectButtonText":"No thanks",
+       "okButtonColor":"#f28046",
+       "askAgainTimeInSeconds":5,
+       "serviceWorkerPath": "service-worker.js"
+   });
+            
+            
+            </script>
       
       
       </body></html>
