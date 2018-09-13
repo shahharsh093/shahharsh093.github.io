@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<script type="text/javascript">
+<!DOCTYPE html><html lang="en"><head><title>Unsubscribe from email</title>
+      <link rel="manifest" href="manifest.json">
+<script type="text/javascript">
       var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
       clevertap.enablePersonalization = true; // enables Personalization
 clevertap.account.push({"id": "W67-774-7Z5Z"});
@@ -12,10 +11,51 @@ clevertap.account.push({"id": "W67-774-7Z5Z"});
     wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wzrk, s);
-})();</script>
-	<title>Just a new page for edureka</title>
-</head>
-<body>
-Suvidhi is now responsible for onboarding. Please contact suvidhi@clevertap.com
-</body>
-</html>
+})();
+      console.log("Harsh");
+      console.log("Yo"+clevertap.getCleverTapID());
+      clevertap.getCleverTapID();
+      </script>
+      </head>
+      <body><div><h4>I want to unsubscribe from future emails</h4><input id="email" type="text" readonly="readonly"><br><br><button onclick="unsubscribe()">Unsubscribe me</button></div><script>// on  page load, fetch the email id of the user
+window.onload = function() {
+    $WZRK_WR.getEmail();
+};
+// will be called after the email id of the user has been fetched
+function wzrk_email_fetched(emailStr) {
+    document.getElementById("email").value = emailStr;
+}
+// will be called after the subscription preferences for the user have been updated
+function wzrk_email_subscription(status) {
+    //status 0 : unsubscribed, status 1 : subscribed
+    // todo - you can show a success message to the user from here
+    var statusLabel = 'subscribed';
+    if (status == 0) {
+    statusLabel = 'unsubscribed';
+    }
+    alert("You've been " + statusLabel);
+}
+// call this function to unsubscribe the user
+function unsubscribe() {
+    $WZRK_WR.unSubEmail();
+}
+// call this function to resubscribe the user
+function resubscribe() {
+    $WZRK_WR.subEmail();
+}
+            
+            clevertap.notifications.push({
+       "titleText":'Would you like to receive Push Notifications?',
+       "bodyText":"We promise to only send you relevant content and give you updates on your transactions",
+       "okButtonText":"Sign me up!",
+       "rejectButtonText":"No thanks",
+       "okButtonColor":"#f28046",
+       "askAgainTimeInSeconds":5,
+       "serviceWorkerPath": "service-worker.js"
+   });
+            
+            
+            </script>
+      
+      
+      </body></html>
