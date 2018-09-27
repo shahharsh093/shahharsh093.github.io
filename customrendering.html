@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html><html lang="en"><head><title>Unsubscribe from email</title>
+      <link rel="manifest" href="manifest.json">
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M79JT6S');</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript">
+      var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
+      clevertap.enablePersonalization = true; // enables Personalization
+clevertap.account.push({"id": "W67-774-7Z5Z"});
+(function () {
+    var wzrk = document.createElement('script');
+    wzrk.type = 'text/javascript';
+    wzrk.async = true;
+    wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wzrk, s);
+})();
+      console.log("Harsh");
+      console.log("Yo"+clevertap.getCleverTapID());
+      clevertap.getCleverTapID();
+      </script>
+      </head>
+      <body>
+            <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M79JT6S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+            
+            
+            <div><h4>I want to unsubscribe from future emails</h4><input id="email" type="text" readonly="readonly"><br><br><button onclick="unsubscribe()">Unsubscribe me</button></div><script>// on  page load, fetch the email id of the user
+window.onload = function() {
+    $WZRK_WR.getEmail();
+};
+// will be called after the email id of the user has been fetched
+function wzrk_email_fetched(emailStr) {
+    document.getElementById("email").value = emailStr;
+}
+// will be called after the subscription preferences for the user have been updated
+function wzrk_email_subscription(status) {
+    //status 0 : unsubscribed, status 1 : subscribed
+    // todo - you can show a success message to the user from here
+    var statusLabel = 'subscribed';
+    if (status == 0) {
+    statusLabel = 'unsubscribed';
+    }
+    alert("You've been " + statusLabel);
+}
+// call this function to unsubscribe the user
+function unsubscribe() {
+    $WZRK_WR.unSubEmail();
+}
+// call this function to resubscribe the user
+function resubscribe() {
+    $WZRK_WR.subEmail();
+}
+            
+            clevertap.notifications.push({
+       "titleText":'Would you like to receive Push Notifications?',
+       "bodyText":"We promise to only send you relevant content and give you updates on your transactions",
+       "okButtonText":"Sign me up!",
+       "rejectButtonText":"No thanks",
+       "okButtonColor":"#f28046",
+       "askAgainTimeInSeconds":5,
+       "serviceWorkerPath": "service-worker.js",
+       "okCallback":function () {
+           console.log("User clicked on ok on popup");
+       },
+       "rejectCallback":function () {
+           console.log("User clicked on reject on popup");
+       },
+       "subscriptionCallback":function () {
+           console.log("User subscribed for web push notifications");
+           var notification = new Notification('CleverTap', { body: "Thank you!", icon: "https://i.imgur.com/SmTNoQe.jpg" });
+       }
+   });
+            
+            
+            </script>
+            
+            
+            
+            clevertap.notificationCallback = function(msg){
+      //raise the notification viewed and clicked events in the callback
+      var message = msg;
+      clevertap.raiseNotificationViewed();
+      console.log(JSON.stringify(msg));//your custom rendering implementation here
+      var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+      $button.click(function(){
+         clevertap.raiseNotificationClicked();
+      });
+};
+            
+      
+      <a href="https://shahharsh093.github.io?utm_medium=test&utm_source=test&utm_campaign=test">Session Refere</a>
+      </body></html>
