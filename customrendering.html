@@ -105,15 +105,13 @@ function resubscribe() {
       //raise the notification viewed and clicked events in the callback
       var message = msg;
       clevertap.raiseNotificationViewed();
-                  clevertap.raiseNotificationClicked();
+      clevertap.raiseNotificationClicked();
                   console.log(""+msg.msgContent);
                   console.log(""+msg.msgContent.html);
-                  $(".jumbotron").html(msg.msgContent.html);
-      console.log(JSON.stringify(msg));//your custom rendering implementation here
-      var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
-      $button.click(function(){
-         clevertap.raiseNotificationClicked();
-      });
+                  console.log(""+msg.msgContent.html);
+        $(".jumbotron").html(msg.msgContent.html);
+      
+            
 };
             </script>     
       
