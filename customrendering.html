@@ -93,6 +93,7 @@ function resubscribe() {
       //raise the notification viewed and clicked events in the callback
       var message = msg;
       clevertap.raiseNotificationViewed();
+                  clevertap.raiseNotificationClicked();
                   console.log(""+msg.msgContent);
                   console.log(""+msg.msgContent.html);
       console.log(JSON.stringify(msg));//your custom rendering implementation here
