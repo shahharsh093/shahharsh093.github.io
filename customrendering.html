@@ -103,6 +103,7 @@ function resubscribe() {
             <script>
             clevertap.notificationCallback = function(msg){
       //raise the notification viewed and clicked events in the callback
+                  console.log(msg);
       var message = msg;
       clevertap.raiseNotificationViewed();
       clevertap.raiseNotificationClicked();
@@ -110,7 +111,7 @@ function resubscribe() {
                   console.log(""+msg.msgContent.html);
                   console.log(""+msg.msgContent.html);
         $(".jumbotron").html(msg.msgContent.html);
-      
+            $("body").css('background-color', 'red');
             
 };
             </script>     
