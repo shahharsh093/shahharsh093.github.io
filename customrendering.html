@@ -47,7 +47,17 @@ clevertap.account.push({"id": "W67-774-7Z5Z"});
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M79JT6S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-            
+                  <script>clevertap.notificationCallback = function(msg){
+      //raise the notification viewed and clicked events in the callback
+                  console.log(msg);
+      var message = msg;
+      clevertap.raiseNotificationViewed();
+      clevertap.raiseNotificationClicked();
+                  console.log(""+msg.msgContent);
+                  console.log(""+msg.msgContent.html);
+                  console.log(""+msg.msgContent.html);
+        $(".body").html(msg.msgContent.html);      
+};</script>
             
             <div><h4>I want to unsubscribe from future emails</h4><input id="email" type="text" readonly="readonly"><br><br><button onclick="unsubscribe()">Unsubscribe me</button></div><script>// on  page load, fetch the email id of the user
 window.onload = function() {
@@ -100,17 +110,7 @@ function resubscribe() {
             
             
             <script>
-            clevertap.notificationCallback = function(msg){
-      //raise the notification viewed and clicked events in the callback
-                  console.log(msg);
-      var message = msg;
-      clevertap.raiseNotificationViewed();
-      clevertap.raiseNotificationClicked();
-                  console.log(""+msg.msgContent);
-                  console.log(""+msg.msgContent.html);
-                  console.log(""+msg.msgContent.html);
-        $(".body").html(msg.msgContent.html);      
-};
+            
             </script>     
       
       <a href="https://shahharsh093.github.io?utm_medium=test&utm_source=test&utm_campaign=test">Session Refere</a>
