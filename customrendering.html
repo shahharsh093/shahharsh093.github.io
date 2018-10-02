@@ -92,8 +92,7 @@ function resubscribe() {
        },
        "subscriptionCallback":function () {
            console.log("User subscribed for web push notifications");
-           var notification = new Notification('CleverTap', { body: "Thank you!", icon: "https://i.imgur.com/SmTNoQe.jpg" });
-       }
+             }
    });
             
             
@@ -111,7 +110,7 @@ function resubscribe() {
                   console.log(""+msg.msgContent.html);
                   console.log(""+msg.msgContent.html);
         $(".jumbotron").html(msg.msgContent.html);
-            $("body").css('background-color', 'red');
+       
             
 };
             </script>     
