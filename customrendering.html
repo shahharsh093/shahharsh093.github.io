@@ -41,4 +41,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <h1> Custom Rendering Web Pop-ups</h1>
+      <script>
+      clevertap.notificationCallback = function(msg){
+      //raise the notification viewed and clicked events in the callback
+      clevertap.raiseNotificationViewed();
+      console.log(JSON.stringify(msg));//your custom rendering implementation here
+            console.log("Harsh Called");
+      var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+      
+};
+      </script>
+      
+      
       </body></html>
