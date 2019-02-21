@@ -2145,12 +2145,14 @@ function __wizrocket() {
                     right = viewWidth * 5 / 100;
                     bottomPosition = viewHeight * 5 / 100;
                     widthPerct = 'width:80%;';
+                    alert('Mobile'+width+','+right+','+bottomPosition);
                     //medium devices - tablets
                 } else if ('ontouchstart' in window || (/tablet/i.test(navigator.userAgent))) {
                     width = viewWidth * 50 / 100 + 20;
                     right = viewWidth * 5 / 100;
                     bottomPosition = viewHeight * 5 / 100;
                     widthPerct = 'width:50%;';
+                    alert('Tablet'+width+','+right+','+bottomPosition);
                 }
 
                 //legacy footer notif
