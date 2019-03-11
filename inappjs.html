@@ -4,6 +4,7 @@
          function sayHello() {
             if(typeof CleverTap !== "undefined" && CleverTap !== null) {
                CleverTap.pushEvent("FromInApp");
+               CleverTap.addMultiValueForKey("foo","bar");
             } else {
                alert("Not viewing in webview");
             }
