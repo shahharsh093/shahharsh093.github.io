@@ -1,24 +1,37 @@
 <html>
    <head>   
       <script type = "text/javascript">
-         function sayHello() {
+         function pushEvent() {
             if(typeof CleverTap !== "undefined" && CleverTap !== null) {
                CleverTap.pushEvent("FromInApp");
-               CleverTap.addMultiValueForKey("foo","bar");
+               document.write ("Event pushed!");
             } else {
-               alert("Not viewing in webview");
+               document.write ("Not raising event in browser!");
             }
-            document.write ("Hello there!");
+            
+         }
+         function pushProperty(){
+            if(typeof CleverTap !== "undefined" && CleverTap !== null) {
+               CleverTap.pushProfile({ "a":"darshan", "b":"pania" });
+               document.write ("Profile pushed!");
+            } else {
+               document.write ("Not raising event in browser!");
+            }
          }
       </script>
       
    </head>
    
-   <body>
-      <p>Click the following button to call the function</p>      
+   <body bgcolor="#E6E6FA">
+      <p>Click the following button to raise an event</p>      
       <form>
-         <input type = "button" onclick = "sayHello()" value = "Say Hello">
+         <input type = "button" onclick = "pushEvent()" value = "Push Event">
       </form>      
-      <p>Use different text in write method and then try...</p>
+      <p>
+      <p>Click the following button to push profile property</p>      
+      <form>
+         <input type = "button" onclick = "pushProperty()" value = "Push Property">
+      </form>      
+      <p>
    </body>
 </html>
