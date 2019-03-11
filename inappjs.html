@@ -12,7 +12,8 @@
          }
          function pushProperty(){
             if(typeof CleverTap !== "undefined" && CleverTap !== null) {
-               CleverTap.pushProfile({ "a":"darshan", "b":"pania" });
+               var JSONObj = { "foo1":"darshan", "bar1":"pania" };
+               CleverTap.pushProfile(JSONObj);
                document.write ("Profile pushed!");
             } else {
                document.write ("Not raising event in browser!");
