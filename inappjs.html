@@ -3,7 +3,7 @@
       <script type = "text/javascript">
          function sayHello() {
             if(typeof CleverTap !== "undefined" && CleverTap !== null) {
-               android.showToast(toast);
+               CleverTap.pushEvent("FromInApp");
             } else {
                alert("Not viewing in webview");
             }
