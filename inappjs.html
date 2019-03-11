@@ -2,7 +2,11 @@
    <head>   
       <script type = "text/javascript">
          function sayHello() {
-            CleverTap.pushEvent("FromInApp");
+            if(typeof CleverTap !== "undefined" && CleverTap !== null) {
+               android.showToast(toast);
+            } else {
+               alert("Not viewing in webview");
+            }
             document.write ("Hello there!");
          }
       </script>
