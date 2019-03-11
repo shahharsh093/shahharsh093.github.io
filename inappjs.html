@@ -14,7 +14,7 @@
             if(typeof CleverTap !== "undefined" && CleverTap !== null) {
                var JSONObj = { "foo1":"darshan", "bar1":"pania" };
                var JSONString = JSON.stringify(JSONObj);
-               CleverTap.pushProfile(JSONString);
+               CleverTap.pushProfile(JSON.stringify({"foo1":"darshan","bar1":"pania"}));
                document.write ("Profile pushed!");
             } else {
                document.write ("Not raising event in browser!");
