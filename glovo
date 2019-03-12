@@ -1,0 +1,303 @@
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        // Copy and paste the below code snippet inside the <head></head> section of your website
+
+     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
+ // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+ clevertap.account.push({"id": "848-4Z4-845Z"});
+ (function () {
+		 var wzrk = document.createElement('script');
+		 wzrk.type = 'text/javascript';
+		 wzrk.async = true;
+		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+		 var s = document.getElementsByTagName('script')[0];
+		 s.parentNode.insertBefore(wzrk, s);
+  })();
+
+    </script>
+    
+    <style>
+        .body{
+             font-family: Gotham-Book, Avenir, Helvetica, Arial, sans-serif;
+        }
+        .unsubscribed[data-v-97216a92]{
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;
+            -webkit-box-orient:vertical;
+            -webkit-box-direction:normal;
+            -ms-flex-direction:column;
+            flex-direction:column;
+            padding-top:40px;
+            max-width:800px;
+            margin:0 auto;
+            min-height:60vh;
+            
+        }
+        
+        @media (max-width:700px){
+            .unsubscribed[data-v-97216a92]{
+                min-height:70vh
+            }
+        }
+        
+        .unsubscribed__content[data-v-97216a92]{
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;-webkit-box-align:center;
+            -ms-flex-align:center;
+            align-items:center;
+            -ms-flex-pack:distribute;
+            justify-content:space-around;
+            margin:40px 0;
+            -ms-flex-wrap:wrap-reverse;
+            flex-wrap:wrap-reverse;
+            padding:20px;
+            font-family: Gotham-Book, Avenir, Helvetica, Arial, sans-serif;
+    }
+        
+        @media (max-width:700px){
+            .unsubscribed__content[data-v-97216a92]{
+                margin:20px 0
+        }
+    }
+        
+    .unsubscribed__img img[data-v-97216a92]{
+        max-width:250px;
+    }
+        
+    @media (max-width:700px){
+        .unsubscribed__img img[data-v-97216a92]{
+            max-width:150px;
+        }
+    }
+    .unsubscribed__text[data-v-97216a92]{
+        display:-webkit-box;
+        display:-ms-flexbox;
+        display:flex;
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+        -ms-flex-direction:column;
+        flex-direction:column;
+        -webkit-box-pack:center;
+        -ms-flex-pack:center;
+        justify-content:center;
+        -webkit-box-align:start;
+        -ms-flex-align:start;
+        align-items:flex-start;
+        font-family: Gotham-Book, Avenir, Helvetica, Arial, sans-serif;
+    }
+        
+    @media (max-width:700px){
+        .unsubscribed__text[data-v-97216a92]{
+            -webkit-box-align:center;
+            -ms-flex-align:center;
+            align-items:center
+        }
+    }
+        
+    h1[data-v-97216a92]{
+        font-size:4em;
+        color:rgba(0,0,0,.8);
+        font-family:Gotham-Bold, Avenir, Helvetica, Arial, sans-serif;
+        text-align:right;
+        padding:0;
+        margin:0;
+    }
+        
+    @media (max-width:700px){
+        h1[data-v-97216a92]{
+            font-size:3em;
+           
+        }
+    }
+        
+    h2[data-v-97216a92]{
+        font-size:1.6em;
+        color:rgba(0,0,0,.4);
+        margin:0;
+    }
+        
+    @media (max-width:700px){
+        h2[data-v-97216a92]{
+            font-size:1.2em
+        }
+    }
+    p[data-v-97216a92]{
+        margin-top:30px;
+    }
+    .router-link-active[data-v-97216a92]{
+        -ms-flex-item-align:start;
+        align-self:flex-start;
+    }
+        
+    @media (max-width:700px){
+        .router-link-active[data-v-97216a92]{
+            -ms-flex-item-align:center;
+            align-self:center;
+        }
+    }
+    
+    .home__footer[data-v-313ff3b0]{
+        min-height:600px;
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:bottom;
+        background-image:url(https://res.cloudinary.com/glovoapp/f_auto,q_auto/Website/B2B_footer_BG.jpg);
+        position:relative
+        };
+        
+    .home__footer--small[data-v-313ff3b0]{
+            min-height:400px;
+        }
+    
+    @media (max-width:700px){
+        .home__footer--small[data-v-313ff3b0]{
+            min-height:300px;
+        }
+        }
+        .home__footer__curve[data-v-313ff3b0]{
+            position:absolute;
+            width:100%;
+            top:0;
+            z-index:1;
+            background-image:url(https://business.glovoapp.com/img/curve_rotated.644b1f87.svg);
+            background-position:top;
+            height:200px;
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+        
+        @media (max-width:700px){
+            .home__footer__curve[data-v-313ff3b0]{
+                top:-3px;
+                height:100px
+            }
+        }
+        
+        .home__footer__curve img[data-v-313ff3b0]{
+            width:100%;
+            -webkit-transform:rotate(180deg);
+            transform:rotate(180deg);
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .home__footer__content[data-v-313ff3b0]{
+            position:absolute;
+            bottom:0;
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;
+            -webkit-box-orient:vertical;
+            -webkit-box-direction:normal;
+            -ms-flex-direction:column;
+            flex-direction:column;
+            -webkit-box-align:center;
+            -ms-flex-align:center;
+            align-items:center;
+            width:calc(100% - 40px);
+            -ms-flex-pack:distribute;
+            justify-content:space-around;
+            height:calc(100% - 165px);
+            color:#fff;
+            padding:20px;
+            font-family: Gotham-Book, Avenir, Helvetica, Arial, sans-serif;
+        }
+        
+        .home__footer__tandc[data-v-313ff3b0]{
+            color:#fff;
+            font-family:Gotham-Medium, Avenir, Helvetica, Arial, sans-serif;
+            font-size:12px;
+            margin-bottom:20px;
+            padding:20px;
+        }
+        
+        .home__footer__logo[data-v-313ff3b0]{
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;
+            -webkit-box-pack:center;
+            -ms-flex-pack:center;
+            justify-content:center;
+            -webkit-box-align:end;
+            -ms-flex-align:end;
+            align-items:flex-end;
+        }
+        
+        .home__footer__logo span[data-v-313ff3b0]{
+            margin-right:10px;
+            line-height:15px;
+        }
+
+    
+</style>
+</head>
+<body>
+    <div data-v-97216a92="" class="unsubscribed">
+    <a data-v-97216a92="" href="/" class="router-link-active">
+        <img data-v-97216a92="" src="https://business.glovoapp.com/img/logo.8c4cd8e1.svg" alt="logo" class="unsubscribed__logo">
+    </a>
+    <div data-v-97216a92="" class="unsubscribed__content">
+        <div data-v-97216a92="" class="unsubscribed__text">
+            <h1 data-v-97216a92="">Goodbye</h1>
+            <h2 data-v-97216a92="">We are sorry to see you go...</h2>
+            <input style="display: none;" type="text" id="email" readonly="readonly" />
+            <p data-v-97216a92="">Click <span onclick="unsubscribe()" style="cursor:grab; font-weight: bold; text-decoration: underline;">here</span> to unsubscribe from our newsletter.</p>
+        </div>
+        <div data-v-97216a92="" class="unsubscribed__img">
+            <img data-v-97216a92="" src="https://business.glovoapp.com/img/sadbox.18fa0902.svg">
+        </div>
+    </div>
+    </div>
+    <div data-v-313ff3b0="" data-v-97216a92="" class="home__footer home__footer--small">
+    <div data-v-313ff3b0="" class="home__footer__curve"></div>
+    <footer data-v-313ff3b0="" class="home__footer__content">
+        <!----><div data-v-313ff3b0="" class="home__footer__content__last">
+        <div data-v-313ff3b0="" class="home__footer__tandc">
+            <a href="https://glovoapp.com/en/legal/terms" target="_blank" style="color:white;">Términos y condiciones</a> y <a href="https://glovoapp.com/en/legal/privacy" target="_blank" style="color:white;">Política de privacidad</a>
+        </div>
+        <div data-v-313ff3b0="" class="home__footer__logo">
+            <span data-v-313ff3b0="">Desarrollado por</span>
+            <img data-v-313ff3b0="" width="75px" src="https://business.glovoapp.com/img/logo-glovo_w.12a92182.svg">
+        </div>
+        </div>
+    </footer>
+    </div>
+    <script>
+        // on  page load, fetch the email id of the user.
+        window.onload = function() {
+            $WZRK_WR.getEmail();
+        };
+
+        // will be called after the email id of the user has been fetched
+        function wzrk_email_fetched(emailStr) {
+            document.getElementById("email").value = emailStr;
+        }
+
+        // will be called after the subscription preferences for the user have been updated
+        function wzrk_email_subscription(status) {
+            //status 0 : unsubscribed, status 1 : subscribed
+            // todo - you can show a success message to the user from here
+            var statusLabel = 'subscribed';
+            if (status == 0) {
+                statusLabel = 'unsubscribed';
+            }
+            alert("You've been " + statusLabel);
+
+        }
+
+        // call this function to unsubscribe the user
+        function unsubscribe() {
+            $WZRK_WR.unSubEmail();
+
+        }
+
+        // call this function to resubscribe the user
+        function resubscribe() {
+            $WZRK_WR.subEmail();
+        }
+    </script>
+    </body>
+</html>
