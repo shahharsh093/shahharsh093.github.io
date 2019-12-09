@@ -1,0 +1,343 @@
+<!-- Reference : https://www.plumrocket.com/blog/2019/09/how-to-create-and-test-amp-for-email/ -->
+
+
+<!doctype html>
+<html ⚡4email>
+<head>
+ <meta charset="utf-8">
+ <script async src="https://cdn.ampproject.org/v0.js"></script>
+ <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+ <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+ <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+ <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+ <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+ <style amp4email-boilerplate>
+ body{visibility:hidden}
+ </style>
+ <style amp-custom>
+ body {
+ font-family: Arial, sans-serif;
+ }
+ .container {
+ max-width: 600px;
+ margin: 0 auto;
+ box-sizing: border-box;
+ padding: 10px;
+ }
+ .introduction__welcome {
+ font-size: 20px;
+ }
+ .title {
+ text-align: center;
+ text-transform: uppercase;
+ }
+ .products {
+ display: flex;
+ align-items: center;
+ height: 100px;
+ box-shadow: 0 1px 0 rgba(0,0,0,0.10);
+ background: #fff;
+ border-radius: 2px;
+ margin-bottom: 15px;
+ padding-bottom: 5px;
+ position: relative;
+ }
+ .products amp-img {
+ float: left;
+ margin-right: 16px;
+ }
+ .benefits,
+ .best-sellers,
+ .review {
+ margin-top: 45px;
+ }
+ .benefits__title {
+ position: relative;
+ padding: 8px 3px;
+ background-color: #fff;
+ font-size: 18px;
+ border-width:1px 0 1px 0;
+ color:#7d7d7d;
+ font-weight: 400;
+ }
+ .benefits__title::after {
+ content: "";
+ position: absolute;
+ right: 10px;
+ top: 50%;
+ transform: translateY(-50%);
+ border-top: 7px solid;
+ border-left: 3px solid transparent;
+ border-right: 3px solid transparent;
+ }
+ .best-sellers__list {
+ padding: 0 50px;
+ }
+ .rating {
+ --star-size: 3; /* use CSS variables to calculate dependent dimensions later */
+ padding: 0; /* to prevent flicker when mousing over padding */
+ border: none; /* to prevent flicker when mousing over border */
+ unicode-bidi: bidi-override; direction: rtl; /* for CSS-only style change on hover */
+ text-align: left; /* revert the RTL direction */
+ user-select: none; /* disable mouse/touch selection */
+ font-size: 3em; /* fallback - IE doesn't support CSS variables */
+ font-size: calc(var(--star-size) * 1em); /* because `var(--star-size)em` would be too good to be true */
+ cursor: pointer;
+ /* disable touch feedback on cursor: pointer - http://stackoverflow.com/q/25704650/1269037 */
+ -webkit-tap-highlight-color: rgba(0,0,0,0);
+ -webkit-tap-highlight-color: transparent;
+ margin-bottom: 1em;
+ }
+ /* the stars */
+ .rating > label {
+ display: inline-block;
+ position: relative;
+ width: 1.1em; /* magic number to overlap the radio buttons on top of the stars */
+ width: calc(var(--star-size) / 3 * 1.1em);
+ }
+ .rating > *:hover,
+ .rating > *:hover ~ label,
+ .rating:not(:hover) > input:checked ~ label {
+ color: transparent; /* reveal the contour/white star from the HTML markup */
+ cursor: inherit; /* avoid a cursor transition from arrow/pointer to text selection */
+ }
+ .rating > *:hover:before,
+ .rating > *:hover ~ label:before,
+ .rating:not(:hover) > input:checked ~ label:before {
+ content: "★";
+ position: absolute;
+ color: gold;
+ }
+ .rating > input {
+ position: relative;
+ transform: scale(3); /* make the radio buttons big; they don't inherit font-size */
+ transform: scale(var(--star-size));
+ /* the magic numbers below correlate with the font-size */
+ top: -0.5em; /* margin-top doesn't work */
+ top: calc(var(--star-size) / 6 * -1em);
+ margin-left: -2.5em; /* overlap the radio buttons exactly under the stars */
+ margin-left: calc(var(--star-size) / 6 * -5em);
+ z-index: 2; /* bring the button above the stars so it captures touches/clicks */
+ opacity: 0; /* comment to see where the radio buttons are */
+ font-size: initial; /* reset to default */
+ }
+ form.amp-form-submit-error [submit-error] {
+ color: red;
+ }
+ .review {
+ padding: 0 70px;
+ padding-bottom: 20px;
+ border: 1px solid #00000030;
+ border-radius: 15px;
+ }
+ .review__form {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ }
+ .review__rating {
+ text-align: center;
+ }
+ .products__button {
+ min-width: 117px;
+ }
+ .products__button--checkout {
+ display: none;
+ }
+ .amp-form-submit-success .review__initial-content,
+ .amp-form-submit-success .products__button,
+ .amp-form-submit-error .products__button,
+ .amp-form-submitting .review__initial-content,
+ .amp-form-submit-error .review__initial-content {
+ display: none;
+ }
+ .amp-form-submit-success .products__button--checkout {
+ display: block;
+ }
+ .review__text {
+ width: 100%;
+ max-width: 438px;
+ box-sizing: border-box;
+ padding: 5px;
+ }
+ .btn {
+ box-sizing: border-box;
+ margin-top: 15px;
+ padding: 10px 20px;
+ text-align: center;
+ font-size: 16px;
+ color: #fff;
+ background-color: #3776de;
+ border: none;
+ transition: 0.2s;
+ border-radius: 5px;
+ text-decoration: none;
+ }
+ .btn--checkout {
+ background-color: orange;
+ }
+ .btn_center {text-align:center;}
+ .btn:hover {
+ opacity: 0.9;
+ }
+ .btn:active {
+ opacity: 0.8;
+ }
+ .review__submit {
+ width: 100%;
+ }
+ .star {
+ color: gold;
+ }
+ .price {
+ font-weight: 700;
+ }
+ .benefits__content {
+ margin-bottom: 10px;
+ padding: 5px 3px;
+ border: 1px solid #dfdfdf;
+ border-top: none;
+ }
+ .benefits__content p {
+ margin: 0;
+ }
+ .products__form {
+ margin-left: auto;
+ }
+ .submit-success__star {
+ text-align: center;
+ }
+ .submit-success {
+ text-align: center;
+ }
+ .submit-success__text {
+ margin-top: 10px;
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <header>
+ <a class="logo" href="https://store.plumrocket.com/">
+ <amp-img width="200" height="66" src="https://www.plumrocket.com/blog/wp-content/uploads/2019/09/logo_luma.png" alt="Luma">
+ </amp-img>
+ </a>
+ </header>
+ <main>
+ <div class="introduction">
+ <p class="introduction__welcome">Hello <span>John Doe</span></p>
+ <p class="introduction__text">
+ As a Team Lume member you'll get loads of new and inspiration every week, and best of all: VIP access to our online sales and special subscriber-only offers! Enjoy!
+ </p>
+ </div>
+ <div class="carousel">
+ <amp-carousel width="580" height="250" layout="responsive" type="slides">
+ <a href="https://demo2.plumrocket.net/amp-email/women/tops-women/hoodies-and-sweatshirts-women.html">
+ <amp-img src="https://www.plumrocket.com/blog/wp-content/uploads/2019/09/1.jpg" width="580" height="250" alt="a sample image"></amp-img>
+ </a>
+ <a href="https://demo2.plumrocket.net/amp-email/women/tops-women/hoodies-and-sweatshirts-women.html">
+ <amp-img src="https://www.plumrocket.com/blog/wp-content/uploads/2019/09/2.jpg" width="580" height="250" alt="a sample image"></amp-img>
+ </a>
+ <a href="https://demo2.plumrocket.net/amp-email/women/tops-women/hoodies-and-sweatshirts-women.html">
+ <amp-img src="https://www.plumrocket.com/blog/wp-content/uploads/2019/09/3.jpg" width="580" height="250" alt="another sample image"></amp-img>
+ </a>
+ <a href="https://demo2.plumrocket.net/amp-email/women/tops-women/hoodies-and-sweatshirts-women.html">
+ <amp-img src="https://www.plumrocket.com/blog/wp-content/uploads/2019/09/4.jpg" width="580" height="250" alt="another sample image"></amp-img>
+ </a>
+ <a href="https://demo2.plumrocket.net/amp-email/women/tops-women/hoodies-and-sweatshirts-women.html">
+ <amp-img src="https://www.plumrocket.com/blog/wp-content/uploads/2019/09/5.jpg" width="580" height="250" alt="another sample image"></amp-img>
+ </a>
+ </amp-carousel>
+ </div>
+ <section class="benefits">
+ <h2 class="title">Benefits of Registering an Account</h2>
+ <amp-accordion>
+ <section>
+ <h4 class="benefits__title">Private Sale - Only-members!</h4>
+ <div class="benefits__content">
+ <p>As a Team Lume member you'll get loads of new and inspiration every week, and best of all: VIP access to our online sales and special subscriber-only offers! Enjoy!</p>
+ </div>
+ </section>
+ <section>
+ <h4 class="benefits__title">Free Delivery and Retuns!</h4>
+ <div class="benefits__content">
+ <div>Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer placerat dapibus sem. Duis rutrum tristique quam, et pulvinar urna. Praesent eget quam dui. Vivamus egestas posuere lorem, ut tempus magna aliquam et. Nulla eu sagittis mauris. Aliquam tincidunt id turpis sit amet consectetur. Phasellus sit amet dignissim felis. Quisque lobortis, eros scelerisque aliquet tincidunt, quam tellus pulvinar lorem, vitae porta nulla velit at turpis. Aliquam erat volutpat.</div>
+ </div>
+ </section>
+ <section>
+ <h4 class="benefits__title">Shop Now. Pay Later.</h4>
+ <figure>
+ <amp-img src="https://www.google.com/images/background/p1.jpg" width="600" height="339" layout="responsive" alt="an image"></amp-img>
+ </figure>
+ </section>
+ </amp-accordion>
+ </section>
+ <section class="best-sellers">
+ <h2 class="title">Our best sellers</h2>
+ <div class="best-sellers__list">
+ <amp-list id="amp-list-placeholder" noloading width="auto" height="500" layout="fixed-height" src="https://demo2.plumrocket.net/live/store/media/amp-email/amp_email_sample_api.php?action=get_products&page=1">
+ <div placeholder>
+ <ul class="results">
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ </ul>
+ </div>
+ <template type="amp-mustache">
+ <div class="products">
+ <amp-img width="80" height="100" alt="{{name}}" src="{{img}}"></amp-img>
+ <div>
+ <p class="name">{{name}}</p>
+ <p class="star">{{{stars}}}</p>
+ <p class="price">${{price}}</p>
+ </div>
+ <form class="products__form" method="post" action-xhr="https://demo2.plumrocket.net/live/store/media/amp-email/amp_email_sample_api.php?action=add_to_cart">
+ <input type="hidden" name="product_id" value="{{id}}">
+ <button type="submit" class="btn products__button">Add to cart</button>
+ <a href="https://store.plumrocket.com/amp-email-magento2-extension.html" class="btn btn--checkout products__button products__button--checkout">Checkout</a>
+ <div submit-error>
+ Something went wrong. Please try again.
+ </div>
+ </form>
+ </div>
+ </template>
+ </amp-list>
+ <div class="btn_center">
+ <button class="btn btn--center" on="tap:amp-list-placeholder.refresh">Show more</button>
+ </div>
+ </div>
+ </section>
+ <section class="review">
+ <h2 class="title">Please share your experience<br>with our store</h2>
+ <form class="review__form" id="rating" method="post" action-xhr="https://demo2.plumrocket.net/live/store/media/amp-email/amp_email_sample_api.php?action=post_review">
+ <div class="review__initial-content">
+ <fieldset class="review__rating rating">
+ <input name="rating" type="radio" id="rating5" value="5">
+ <label for="rating5" title="5 stars">&#x2606;</label>
+ <input name="rating" type="radio" id="rating4" value="4" checked="checked">
+ <label for="rating4" title="4 stars">&#x2606;</label>
+ <input name="rating" type="radio" id="rating3" value="3">
+ <label for="rating3" title="3 stars">&#x2606;</label>
+ <input name="rating" type="radio" id="rating2" value="2">
+ <label for="rating2" title="2 stars">&#x2606;</label>
+ <input name="rating" type="radio" id="rating1" value="1">
+ <label for="rating1" title="1 stars">&#x2606;</label>
+ </fieldset>
+ <textarea name="message" class="review__text" cols="60" rows="10" placeholder="Write your review"></textarea>
+ <button type="submit" class="btn review__submit">Submit</button>
+ </div>
+ <div class="submit-success" submit-success>
+ <template type="amp-mustache">
+ <div>{{message}}</div>
+ <div class="star">{{{stars}}}</div>
+ <div class="submit-success__text">{{review_message}}</div>
+ </template>
+ </div>
+ </form>
+ </section>
+ </main>
+ </div>
+</body>
+</html>
