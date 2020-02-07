@@ -1,219 +1,32 @@
-
-<html>
-<head>
-<script type="text/javascript">
-    var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
-    // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-	clevertap.account.push({"id": "W67-774-7Z5Z"});
-	clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
-	clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
-    (function () {
-            var wzrk = document.createElement('script');
-            wzrk.type = 'text/javascript';
-            wzrk.async = true;
-            wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wzrk, s);
-    })();
-</script>
-
-<link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
-<style>
-    body {
-        font-family: 'Chivo', sans-serif;
-        max-width: 600px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: auto;
-    }
-    #unsub-form {
-   		width: 95%;
-    }
-    h1 {
-    	font-weight: bold;
-    	margin-top: 0px;
-    }
-    label {font-weight: bold;}
-    span {
-        margin-top: 0.5em;
-        margin-right: 0;
-        padding-right: 0;
-        font-weight: normal;
-        font-size: 0.8em;
-    }
-    .email-pref-header {font-size: 1em; padding-left: 0em;}
-    .details {margin-left: 2em; font-size: 0.8em;}
-    .button {margin: auto; width: 226px;}
-    input[type="Button"] {
-        padding: 10px 50px;
-        border: none;
-        color: #ffffff;
-        background-color: #1864D6;
-        border-radius: 5px;
-    }
-    input[type="Button"]:active {transform: translateY(1px);}
-
-    #email {
-        font-family: Chivo;
-        padding: 0;
-        margin: 0;
-        margin-top: 0.5em;
-        width: auto;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        font-size: 0.9em;
-    }
-    #email:focus {outline: none;}
-	#email {font-weight: bold;}
-	#pref-update-banner{
-		display: none;
-	}
-
-</style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale = 1.0,maximum-scale = 1.0">
+    <title data-nl-localizable="true">Abandonment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+      body { background-color: rgb(221, 221, 221); }
+      .container { background-color: #fff; max-width: 640px; margin-top: 15px; }
+      #header { padding: 10px 0 20px 0; }
+      #header img { margin: 0 auto; }
+      #intro { padding: 0 10% 0 10%; margin-top: 25px; }
+      #form { padding: 0 10% 0 10%; margin: 30px 0 30px 0; }
+      .btn-primary { background-color: #09f; border-style: none; }
+    </style>
 </head>
 
-<body>
-<div id="unsub-form">
-<h1>Email Preferences</h1>
-<span class="email-pref-header">You're currently updating email preferences for </span><input type="text" id="email" readonly="readonly" />
+<body style="position: static; width: 1456px; height: 628px; left: 0px; top: 0px; background-color: rgb(221, 221, 221); background-position: left top; background-repeat: repeat;" class="">
+<div class="container">
+<div id="header" class="text-center"><img src="http://res.customer.circles.life/res/liberty_mkt_prod1/d3d33996be9a956383eb55c6eb561f02b7ef894319205f697db0d4e2b28e50be.png" style="width: 356px; height: 100px; position: static; left: 0px; top: 0px;" /></div>
+<div class="row"><img src="http://res.customer.circles.life/res/liberty_mkt_prod1/370c024423c52d2aac46f2e53136f795114e603f7cf166d1f6684f509aca5301.jpeg" class="banner img-responsive" style="width: 640px; height: 294px;" /></div>
+<section id="intro" class="text-center">
+<h4>你已成功取消訂閱此電子郵件</span></h4>
 
-<div>
-    <p>Uncheck the types of emails you do not want to receive:</p>
-    <br>
-    <div class="unsub-section">
-        <input onchange="toggleAllowTripsUpdate(this)" type="checkbox" name="trip-email" id="trip-email" value="trip-email" checked/>
-        <label for="trip-email">Trip Updates and Suggestions</label>
-        <br>
-        <p class="details">Flight status, itinerary planning updates and ideas on where to go and what to do for your trip planning.</p>
-    </div>
+</section>
 
-    <div class="unsub-section">
-        <input onchange="toggleAllowPromo(this)" type="checkbox" name="promo-email" id="promo-email" value="promo-email" checked/>
-        <label for="promo-email">Promo Codes For You</label>
-        <br>
-        <p class="details">Receive birthday coupons and personalised gifts.</p>
-    </div>
-
-    <div class="unsub-section">
-        <input onchange="toggleAllowLatest(this)" type="checkbox" name="updates-email" id="updates-email" value="updates-email" checked/>
-        <label for="updates-email">Latest Updates</label>
-        <br>
-        <p class="details">Discover up and coming travel destinations, get information on the latest app features and deals on travel essentials.</p>
-    </div>
-    <br>
-    <div class="button"><input onclick="submitForm(this);return false;" type ="Button" value="Save my preferences" id="save-pref"></div>
 </div>
-</div>
-
-<div id="pref-update-banner">
-	<h2>Your preferences have been updated.</h2>
-</div>
-
-
-<script>
-    /*
-        Allow-email Trip Updates and Suggestions
-        Allow-push Trip Updates and Suggestions
-        Allow-email Promo Codes For You
-        Allow-push Promo Codes For You
-        Allow-email Latest Updates
-        Allow-push Latest Updates 
-    */
-    var userEmail = null;
-    var allowTripsUpdate = true;
-    var allowPromo = true;
-    var allowLatest = true;
-
-    function toggleAllowTripsUpdate(e) {
-        allowTripsUpdate = e.checked;
-    }
-    function toggleAllowPromo(e) {
-        allowPromo = e.checked;
-    }
-    function toggleAllowLatest(e) {
-        allowLatest = e.checked;
-    }
-    function submitForm(e) {
-    	console.log("User Email: "+'"'+userEmail+'"');
-
-        clevertap.profile.push({
-            "Site": {
-               "Email": '"'+userEmail+'"'
-            }
-        });
-
-        clevertap.event.push({
-        	"Site": {
-               "Page visited": "Update Email Preferences"
-            }
-        });
-
-        clevertap.event.push("Testing web events");
-        console.log("Web event push done");
-
-        clevertap.onUserLogin.push({
-            "Site": {
-               "Email": '"'+userEmail+'"',
-
-               "Allow-email Promo Codes For You": allowPromo,
-               "Allow-email Latest Updates": allowLatest,
-               "Allow-email Trip Updates and Suggestions": allowTripsUpdate
-            }
-        });
-
-
-        //alert("You preferences have been updated.");
-        var unsubform = document.getElementById("unsub-form")
-        var prefupdate = document.getElementById("pref-update-banner")
-
-        unsubform.style.display = "none"
-        prefupdate.style.display = "block"
-
-        //console.log('email: '+ userEmail);
-        //console.log('Promo: '+ allowPromo);
-        //console.log('Latest Updates: '+ allowLatest);
-        //console.log('Trip: '+ allowTripsUpdate);
-    }
-
-    // on  page load, fetch the email id of the user.
-    window.onload = function() {
-        $WZRK_WR.getEmail();
-    };
-    // will be called after the email id of the user has been fetched
-    function wzrk_email_fetched(emailStr) {
-        userEmail = emailStr;
-
-        // This section is just to ensure the input box displays the full user email, due to increase of font size.
-        document.getElementById("email").value = emailStr;
-        var emailLength = userEmail.length;
-        emailInputLength = Math.ceil(emailLength * 1.1); // Random estimate
-        document.querySelector("#email").setAttribute("size",emailInputLength);
-    }
-
-
-
-
-    // The below functions not relevant anymore
-
-    // will be called after the subscription preferences for the user have been updated
-    function wzrk_email_subscription(status) {
-        //status 0 : unsubscribed, status 1 : subscribed
-        // todo - you can show a success message to the user from here
-        var statusLabel = 'subscribed';
-        if (status == 0) {
-            statusLabel = 'unsubscribed';
-        }
-        alert("You've been " + statusLabel);
-    }
-    // call this function to unsubscribe the user
-    function unsubscribe() {
-        $WZRK_WR.unSubEmail();
-    }
-    // call this function to resubscribe the user
-    function resubscribe() {
-        $WZRK_WR.subEmail();
-    }
-</script>
+<section id="copyright" class="text-center"><small> 2019 © Liberty Wireless Pte Ltd 版權所有</small></section>
 </body>
+</html>
