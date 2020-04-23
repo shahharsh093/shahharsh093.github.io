@@ -27,6 +27,22 @@ Hello CleverTap User.
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  const messaging = firebase.messaging();
+  messaging.usePublicVapidKey("BFNEXIqVAZ2mImsitwQujSWrHITQBUyavWrBxllpKssBEtV0oWKMfuLd1qlkuVgF6lvKuOmpGwpes2e-alPqDaw");
+
+messaging.getToken().then((currentToken) => {
+  if (currentToken) {
+    console.log('current fcm token'+currentToken);
+  } else {
+    // Show permission request.
+    console.log('No Instance ID token available. Request permission to generate one.');
+    // Show permission UI.
+  
+  }
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+});
+
 </script>
 
 <!-- https://console.firebase.google.com/u/0/project/zeke-160bc/overview -->
