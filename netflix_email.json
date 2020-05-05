@@ -1,11 +1,81 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "hello"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+"business_logo_url": "",
+first_name | String
+
+show_name | String
+show_big_image_url |  String
+show_big_image_deep_link | String
+
+
+episode_thumbnail_url_1 | String
+episode_thumnail_completion_url_1 | String
+has_see_1 | boolean
+current_episode_1 | boolean
+
+
+episode_thumbnail_url_2 | String
+episode_thumnail_completion_url_2 | String
+has_see_2 | boolean
+current_episode_2 | boolean
+
+
+episode_thumbnail_url_3 | String
+episode_thumnail_completion_url_3 | String
+has_see_3 | boolean
+current_episode_3 | boolean
+
+episode_thumbnail_url_4 | String
+episode_thumnail_completion_url_4 | String
+has_see_4 | boolean
+current_episode_4 | boolean
+
+episode_thumbnail_url_5 | String
+episode_thumnail_completion_url_5 | String
+has_see_5 | boolean
+current_episode_5 | boolean
+
+my_list_image_url_1 | String
+my_list_deep_link_1 | String
+
+my_list_image_url_2 | String
+my_list_deep_link_2 | String
+
+my_list_image_url_3 | String
+my_list_deep_link_3 | String
+
+top_picks_for_you_url_1 | String
+top_picks_deep_link_url_1 | String
+
+top_picks_for_you_url_2 | String
+top_picks_deep_link_url_2 | String
+
+top_picks_for_you_url_3 | String
+top_picks_deep_link_url_3 | String
+
+watch_it_again_url_1 | String
+watch_it_again_deep_link_1 | String
+
+watch_it_again_url_2 | String
+watch_it_again_deep_link_2 | String
+
+watch_it_again_url_3 | String
+watch_it_again_deep_link_3 | String
+
+because_you_watched_url_1 | String
+because_you_watched_deep_link_1 | String
+
+because_you_watched_url_2 | String
+because_you_watched_deep_link_2 | String
+
+because_you_watched_url_3 | String
+because_you_watched_deep_link_3 | String
+
+targeted_email_address | String
+
+
+
+
+
+
+
 }
