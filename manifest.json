@@ -1,4 +1,6 @@
 {
-	"name": "Push Demo"
+	"name": "Push Demo",
+	"gcm_sender_id": "112273261716"
+
 	
 }
