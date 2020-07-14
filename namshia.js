@@ -212,7 +212,9 @@ function __wizrocket() {
       navigator["serviceWorker"]['register'](serviceWorkerPath)['then'](function () {
         return navigator['serviceWorker']['ready'];
       })['then'](function (serviceWorkerRegistration) {
-
+         console.log('running new code');
+        serviceWorkerRegistration['pushManager']['getSubscription']()['then'](function (subscription) {
+          debugger; });
         var subscribeObj = { "userVisibleOnly": true }
 
         if(fcmPublicKey != null) {
