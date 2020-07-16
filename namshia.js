@@ -69,7 +69,7 @@ function __wizrocket() {
     CLEAR: 'clear',
     CHARGED_ID: 'Charged ID',
     CHARGEDID_COOKIE_NAME: 'WZRK_CHARGED_ID',
-    GCOOKIE_NAME: 'WZRK_G-H',
+    GCOOKIE_NAME: 'WZRK_G',
     KCOOKIE_NAME: 'WZRK_K',
     CAMP_COOKIE_NAME: 'WZRK_CAMP',
     SCOOKIE_PREFIX: 'WZRK_S',
@@ -100,7 +100,7 @@ function __wizrocket() {
 
   var TWENTY_MINS = 20 * 60 * 1000;
 
-  var SCOOKIE_EXP_TIME_IN_SECS = 600 * 200;  // 20 mins
+  var SCOOKIE_EXP_TIME_IN_SECS = 60 * 20;  // 20 mins
 
 
   var EVT_PING = "ping", EVT_PUSH = "push";
@@ -327,7 +327,9 @@ function __wizrocket() {
         wc.e(wzrk_msg['embed-error']);
         return;
       }
+      // SCOOKIE_NAME = STRING_CONSTANTS.SCOOKIE_PREFIX + '_' + accountId;
       SCOOKIE_NAME = STRING_CONSTANTS.SCOOKIE_PREFIX;
+
 
     }
     if (typeof wizrocket['region'] != STRING_CONSTANTS.UNDEFINED) {
@@ -1696,6 +1698,7 @@ function __wizrocket() {
           if (value.length == 32) {
             guid = value;
             wiz.saveToLSorCookie(STRING_CONSTANTS.GCOOKIE_NAME, value);
+            wiz.saveToLSorCookie(SCOOKIE_NAME, value);
           } else {
             wc.e("Illegal guid " + value);
           }
@@ -1843,6 +1846,9 @@ function __wizrocket() {
 
       wiz.createBroadCookie(STRING_CONSTANTS.GCOOKIE_NAME, global, COOKIE_EXPIRY, domain);
       wiz.saveToLSorCookie(STRING_CONSTANTS.GCOOKIE_NAME, global);
+      wiz.saveToLSorCookie(SCOOKIE_NAME, global);
+
+
     }
 
     if (resume) {
@@ -1978,13 +1984,10 @@ function __wizrocket() {
       domainStr = "; domain=" + domain;
     }
 
-    
-    value = "ffafa8bf3e174758a55bcdbaa4a6549b";
-    
+    value = encodeURIComponent(value);
 
     document.cookie = name + "=" + value + expires + domainStr + "; path=/";
     console.log('Creating cookie: with name:'+name+'with value '+value+' with expires' + expires + 'with domainstring ' + domainStr);
-
   };
 
   wiz.readCookie = function readCookie(name) {
@@ -1996,7 +1999,6 @@ function __wizrocket() {
         c = c.substring(1, c.length);
       }
       if (c.indexOf(nameEQ) == 0) {
-        var value = decodeURIComponent(c.substring(nameEQ.length, c.length));
         console.log('Reading cookie: with name:'+name+'with value'+value);
         return decodeURIComponent(c.substring(nameEQ.length, c.length));
       }
