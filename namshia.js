@@ -1969,7 +1969,7 @@ function __wizrocket() {
     var domainStr = "";
     if (seconds) {
       var date = new Date();
-      date.setTime(date.getTime() + (seconds * 1000));'
+      date.setTime(date.getTime() + (seconds * 1000));
 
       expires = "; expires=" + date.toGMTString();
     }
