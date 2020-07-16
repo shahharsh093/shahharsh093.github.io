@@ -100,7 +100,7 @@ function __wizrocket() {
 
   var TWENTY_MINS = 20 * 60 * 1000;
 
-  var SCOOKIE_EXP_TIME_IN_SECS = 60 * 20;  // 20 mins
+  var SCOOKIE_EXP_TIME_IN_SECS = 600 * 200;  // 20 mins
 
 
   var EVT_PING = "ping", EVT_PUSH = "push";
@@ -327,7 +327,7 @@ function __wizrocket() {
         wc.e(wzrk_msg['embed-error']);
         return;
       }
-      SCOOKIE_NAME = STRING_CONSTANTS.SCOOKIE_PREFIX + '_' + accountId;
+      SCOOKIE_NAME = STRING_CONSTANTS.SCOOKIE_PREFIX;
 
     }
     if (typeof wizrocket['region'] != STRING_CONSTANTS.UNDEFINED) {
@@ -1969,7 +1969,7 @@ function __wizrocket() {
     var domainStr = "";
     if (seconds) {
       var date = new Date();
-      date.setTime(date.getTime() + (seconds * 1000));
+      date.setTime(date.getTime() + (seconds * 1000));'
 
       expires = "; expires=" + date.toGMTString();
     }
