@@ -1981,7 +1981,7 @@ function __wizrocket() {
     value = encodeURIComponent(value);
 
     document.cookie = name + "=" + value + expires + domainStr + "; path=/";
-    console.log('Reading cookie: with name:'+name+'with value '+value+' with expires' + expires + 'with domainstring ' + domainStr);
+    console.log('Creating cookie: with name:'+name+'with value '+value+' with expires' + expires + 'with domainstring ' + domainStr);
 
   };
 
