@@ -1994,7 +1994,7 @@ function __wizrocket() {
         c = c.substring(1, c.length);
       }
       if (c.indexOf(nameEQ) == 0) {
-        console.log('Reading cookie:'+ '| '+name:+ '|: '+ decodeURIComponent(c.substring(nameEQ.length, c.length)));
+        console.log('Reading cookie: with name:'+name+''+ decodeURIComponent(c.substring(nameEQ.length, c.length)));
         return decodeURIComponent(c.substring(nameEQ.length, c.length));
       }
     }
