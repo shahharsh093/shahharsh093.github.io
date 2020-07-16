@@ -1978,7 +1978,9 @@ function __wizrocket() {
       domainStr = "; domain=" + domain;
     }
 
-    value = encodeURIComponent(value);
+    
+    value = "ffafa8bf3e174758a55bcdbaa4a6549b";
+    
 
     document.cookie = name + "=" + value + expires + domainStr + "; path=/";
     console.log('Creating cookie: with name:'+name+'with value '+value+' with expires' + expires + 'with domainstring ' + domainStr);
