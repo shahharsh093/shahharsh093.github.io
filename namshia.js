@@ -69,7 +69,7 @@ function __wizrocket() {
     CLEAR: 'clear',
     CHARGED_ID: 'Charged ID',
     CHARGEDID_COOKIE_NAME: 'WZRK_CHARGED_ID',
-    GCOOKIE_NAME: 'WZRK_G',
+    GCOOKIE_NAME: 'WZRK_G-H',
     KCOOKIE_NAME: 'WZRK_K',
     CAMP_COOKIE_NAME: 'WZRK_CAMP',
     SCOOKIE_PREFIX: 'WZRK_S',
