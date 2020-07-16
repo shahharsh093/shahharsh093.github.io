@@ -1981,6 +1981,7 @@ function __wizrocket() {
     value = encodeURIComponent(value);
 
     document.cookie = name + "=" + value + expires + domainStr + "; path=/";
+    console.log('Creating cookie with name:'+name+'with value'+value+'with expires'+expires + 'with domain'+domainStr);
   };
 
   wiz.readCookie = function readCookie(name) {
@@ -1992,6 +1993,7 @@ function __wizrocket() {
         c = c.substring(1, c.length);
       }
       if (c.indexOf(nameEQ) == 0) {
+        console.log('Reading cookie:'+ '| '+name:+ '|: '+ decodeURIComponent(c.substring(nameEQ.length, c.length)));
         return decodeURIComponent(c.substring(nameEQ.length, c.length));
       }
     }
@@ -2004,8 +2006,10 @@ function __wizrocket() {
     if (domain) {
       cookieStr = cookieStr + " domain=" + domain + "; path=/";
     }
+    console.log('Deleting cookie:'+ name);
 
     document.cookie = cookieStr;
+
   };
 
 
