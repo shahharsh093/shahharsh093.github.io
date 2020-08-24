@@ -274,7 +274,7 @@ clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agre
 
         // will be called after the email id of the user has been fetched
         function wzrk_email_fetched(emailStr) {
-            document.getElementById("email").value = emailStr;
+            console.log(''+emailStr);
         }
 
         // will be called after the subscription preferences for the user have been updated
@@ -302,7 +302,7 @@ clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agre
 	    
 	    var referrer = document.referrer;
      console.log(""+referrer);
-	    
+	      </script>
 	    
 <script>
     (function() {
@@ -396,15 +396,11 @@ clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agre
 
       checkCookie();
     })();
-</script>';
 iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(html);
 document.body.appendChild(iframe);
 console.log('iframe.contentWindow =', iframe.contentWindow);
-	    
-	    
-	    
-    </script>
-	
+	   
+	</script>
 
 	
 	<script type="text/javascript">
