@@ -1,0 +1,61 @@
+<html>
+<body>
+// Copy and paste the below code snippet inside the <head></head> section of your website
+
+<script type="text/javascript">
+     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
+ // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+ clevertap.account.push({"id": "W67-774-7Z5Z"});
+ (function () {
+		 var wzrk = document.createElement('script');
+		 wzrk.type = 'text/javascript';
+		 wzrk.async = true;
+		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+		 var s = document.getElementsByTagName('script')[0];
+		 s.parentNode.insertBefore(wzrk, s);
+  })();
+</script> 
+<div>    
+   <h4>I want to unsubscribe from future emails
+   </h4>        
+   <input type=“text” id=“email” readonly=“readonly” />      
+   <br/><br/>
+   <button onclick=\"changeSubscriptionGroups()\">Update Subscription Groups</button>    
+</div>  
+<script> 
+  var isReEncode = false //Should be true only if your server is url encoding the URL on unsubscribe landing page     
+  var withGroups = true  
+  window.onload = function() // on  page load, fetch the email id of the user
+  {
+    $WZRK_WR.getEmail(isReEncode,withGroups);
+  };
+  function wzrk_email_fetched(emailStr, profile) {                document.getElementById(“email”).value = emailStr;                setGroups(profile);// will be called after the email id of the user has been fetched    
+ }
+ function setGroups(profile) {
+   if(!profile || !profile.groups || profile.groups.length === 0) {                 return;                                                                  }
+   $WZRK_WR.setSubscriptionGroups(profile.groups); //this method can be used to call group values
+   var groups = $WZRK_WR.getSubscriptionGroups;//can be used to print groups by adding checkboxes or any other css element
+   for(var i = 0; i < groups; i++) {
+     console.log(groups[i].name);
+     console.log(groups[i].isUnsubscribed);
+   }
+ }
+  function changeSubscriptionGroups(){
+    var isRencoded = false;// Fetch the updated groups data here. Format will be the same as recieved in the payload  with updated values
+    var updated_groups = ...
+    $WZRK_WR.changeSubscriptionGroups(isRencoded, updated_groups);
+    } 
+  function wzrk_email_subscription(status) {  
+    // will be called after the subscription preferences for the user have been updated   
+    var statusLabel = ‘subscribed’;        
+    if (status == 0) {
+      statusLabel = ‘unsubscribed’;
+    }//status 0 : unsubscribed, status 1 : subscribed        
+    alert(“You’ve been ” + statusLabel);    
+  } // call this function to unsubscribe the user 
+</script>
+    }
+  ]
+}
+</body>
+</html>
