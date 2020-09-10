@@ -1,59 +1,45 @@
 <html>
 <head>
-
+  <title>Sample HTML Page | CT</title>
 </head>
 <body>
-  <p>Single tag</p>
-  
+
 <script type="text/javascript">
-(function(t,e,a,l,i,u,m,j,s){
-m=function(o,p,q){j.q.push([o,p,q])};j=u[i]={q:[],config:function(n,d)
-{m("config",n,d)},track:function(n,d){m("track",n,d)},debug:function(n)
-{m("debug",n)}};s=function(){u[i]=Tealium(j.q)};j.config("init",
-[t,e,a,l]);if(u.Tealium&&u.TEAL&&u.TEAL[t+"/"+e+"/"+l]){s()}else{j.callback=s}
-})("growthwave-sandbox","di-aaqib","prod","7km6s7","tealium",window);
+var utag_data = {
+  page_name : "1", // Contains a user-friendly name for the page.
+  page_section : "2", // Contains a user-friendly page section, e.g. 'configuration section'.
+  page_category : "3", // Contains a user-friendly page category, e.g. 'appliance page'.
+  page_subcategory : "4" // Contains a user-friendly page subcategory, e.g. 'refrigerator page'.
+  
+}
 </script>
 
-<script async src="https://tags.tiqcdn.com/tms/growthwave-sandbox/di-aaqib/prod/7km6s7/
-tealium.js"></script>
-
-
+<!-- Loading script asynchronously -->
 <script type="text/javascript">
-// Tracking call may be included directly in page source here,
-// or for Single Page Apps (SPAs) it is included in app logic
-tealium.track( "Content Viewed", { page_name : "Hello World!" } ); // Sending your
-first event!"
+    (function(a,b,c,d){
+    a='https://tags.tiqcdn.com/utag/growthwave-sandbox/di-aaqib/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
 </script>
 
-<script type="text/javascript">
-(function(t,e,a,l,i,u,m,j,s){
-m=function(o,p,q){j.q.push([o,p,q])};j=u[i]={q:[],config:function(n,d)
-{m("config",n,d)},track:function(n,d){m("track",n,d)},debug:function(n)
-{m("debug",n)}};s=function(){u[i]=Tealium(j.q)};j.config("init",
-[t,e,a,l]);if(u.Tealium&&u.TEAL&&u.TEAL[t+"/"+e+"/"+l]){s()}else{j.callback=s}
-})("growthwave-sandbox","di-aaqib","prod","do7g5u","tealium",window);
-</script>
-<script async src="https://tags.tiqcdn.com/tms/growthwave-sandbox/di-aaqib/prod/do7g5u/
-tealium.js"></script>
-<script type="text/javascript">
-// Tracking call may be included directly in page source here,
-// or for Single Page Apps (SPAs) it is included in app logic
-tealium.track( "Content Viewed", { page_name : "Hello World!" } ); // Sending your
-first event!"
-</script>  
-  
-  
-  
-<!-- Tealium Universal Data Object -->
-<script type="text/javascript">
-  var utag_data={
-      "page_type"     : "section",
-      "site_section"  : "men",
-      "page_name"     : "Men's Fashion | Acme Inc.",
-      "country_code"  : "US",
-      "currency_code" : "USD"};
-</script>
+<h1>Implementing The Tealium Universal Tag</h1>
 
+<p>The script is generated dynamically based on your configuration selections 
+and includes your Data Layer. The Data Layer is generated from the variables 
+listed in the Variables tab.</p>
+
+<h2>To place the code on your website:</h2>
+
+<ol>
+    <li> Ensure you are are getting the code for the correct environment by 
+looking at the navigation on the left. (Dev, QA, Prod)</li>
+    <li> Click on the "Tealium Script" tab above.</li>
+    <li> Click and drag to select all the code.</li>
+    <li> Copy the code.</li>
+    <li> Navigate to the appropriate webpage, and paste 
+the code after the opening BODY tag.</li>
+</ol>
 
 </body>
-</html>
+</html>    
