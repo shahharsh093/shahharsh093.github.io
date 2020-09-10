@@ -24,7 +24,26 @@ tealium.js"></script>
 tealium.track( "Content Viewed", { page_name : "Hello World!" } ); // Sending your
 first event!"
 </script>
- 
+
+<script type="text/javascript">
+(function(t,e,a,l,i,u,m,j,s){
+m=function(o,p,q){j.q.push([o,p,q])};j=u[i]={q:[],config:function(n,d)
+{m("config",n,d)},track:function(n,d){m("track",n,d)},debug:function(n)
+{m("debug",n)}};s=function(){u[i]=Tealium(j.q)};j.config("init",
+[t,e,a,l]);if(u.Tealium&&u.TEAL&&u.TEAL[t+"/"+e+"/"+l]){s()}else{j.callback=s}
+})("growthwave-sandbox","di-aaqib","prod","do7g5u","tealium",window);
+</script>
+<script async src="https://tags.tiqcdn.com/tms/growthwave-sandbox/di-aaqib/prod/do7g5u/
+tealium.js"></script>
+<script type="text/javascript">
+// Tracking call may be included directly in page source here,
+// or for Single Page Apps (SPAs) it is included in app logic
+tealium.track( "Content Viewed", { page_name : "Hello World!" } ); // Sending your
+first event!"
+</script>  
+  
+  
+  
 <!-- Tealium Universal Data Object -->
 <script type="text/javascript">
   var utag_data={
