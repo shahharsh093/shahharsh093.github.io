@@ -5,7 +5,6 @@
 <body>
   <p>Single tag</p>
   
-  <!-- Standard/required to declare window.tealium and set config. This must execute before any 
 <script type="text/javascript">
 (function(t,e,a,l,i,u,m,j,s){
 m=function(o,p,q){j.q.push([o,p,q])};j=u[i]={q:[],config:function(n,d)
@@ -26,6 +25,16 @@ tealium.track( "Content Viewed", { page_name : "Hello World!" } ); // Sending yo
 first event!"
 </script>
  
+<!-- Tealium Universal Data Object -->
+<script type="text/javascript">
+  var utag_data={
+      "page_type"     : "section",
+      "site_section"  : "men",
+      "page_name"     : "Men's Fashion | Acme Inc.",
+      "country_code"  : "US",
+      "currency_code" : "USD"};
+</script>
+
 
 </body>
 </html>
