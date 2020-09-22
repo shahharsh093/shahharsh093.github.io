@@ -38,6 +38,7 @@
         }
         var subscriptionGroups = profile.groups; // will be recvd only if withGroups passed true above
         $WZRK_WR.setSubscriptionGroups(subscriptionGroups); // Can also be set here and can be retrieved by calling `$WZRK_WR.getSubscriptionGroups` method
+        $WZRK_WR.setUpdatedCategoryLong(profile);
         displayGroups()
     }
   function displayGroups() {
