@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web View Event</title>
+</head>
+<body>
+
+<p>Web View Event(s)</p>
+<script type="text/javascript">
+	//An example of recording a User Event called Product Viewed in the Webview JS
+if (window.CleverTap) {
+  // Call Android interface             
+ CleverTap.pushEvent("Product Viewed");          
+}
+
+
+
+//An example of recording a User Event called Product Viewed with properties, in the Webview JS
+var props = {foo: 'xyz', lang: 'French', harsh : 1};
+
+if (window.CleverTap) {
+  // Call Android interface             
+ CleverTap.pushEvent("Product Viewed",JSON.stringify(props));
+            
+}
+
+
+//An example of updating profile properties of the User in the Webview JS
+var props = {foo: 'xyz', lang: 'French', shah : 2.57};
+if (window.CleverTap) {
+  // Call Android interface             
+ CleverTap.pushProfile(JSON.stringify(props));          
+}
+
+
+//An example of adding user property for the User in the Webview JS
+if (window.CleverTap) {
+  // Call Android interface 
+CleverTap.addMultiValueForKey('membership', 'gold');
+}
+
+
+//An example of adding multiple user properties for the User in the Webview JS
+var cars = ['Saab', 'Volvo', 'BMW', 'Kia'];
+if (window.CleverTap) {
+  // Call Android interface 
+CleverTap.addMultiValuesForKey('Cars', JSON.stringify(cars));
+
+}
+
+
+//An example of removing a user property for a specific key in the Webview JS
+if (window.CleverTap) {
+// Call Android interface 
+CleverTap.removeMultiValueForKey(‘Cars’, 'Saab');
+}
+
+
+//An example of removing multiple user properties for a specific key in the Webview JS
+var cars = ['BMW', 'Kia'];
+if (window.CleverTap) {
+  // Call Android interface 
+CleverTap.removeMultiValuesForKey('Cars', JSON.stringify(cars));
+}
+
+
+//An example of removing a user property by specifying a key in the Webview JS
+if (window.CleverTap) {
+  // Call Android interface 
+CleverTap.removeValueForKey('Cars');
+}
+
+
+//An example of setting a user property by specifying the key in the Webview JS
+var values = ['Mercedes','Bentley']
+if (window.CleverTap) {
+  // Call Android interface 
+CleverTap.setMultiValueForKey('Cars', JSON.stringify(values));
+}
+</script>
+
+</body>
+</html>
