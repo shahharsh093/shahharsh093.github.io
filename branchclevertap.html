@@ -155,13 +155,15 @@ a:hover{
 <body>
 
 <script type="text/javascript">
-var utag_data = {
-  page_name : "1", // Contains a user-friendly name for the page.
-  page_section : "2", // Contains a user-friendly page section, e.g. 'configuration section'.
-  page_category : "3", // Contains a user-friendly page category, e.g. 'appliance page'.
-  page_subcategory : "4" // Contains a user-friendly page subcategory, e.g. 'refrigerator page'.
-  
-}
+ <script>
+    // load Branch
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+    // init Branch
+    branch.init('key_test_gbKT1scmKC6LIyJXAXlh0lcgEAdwvq9U');
+
+
+
+  </script>
 </script>
 
 <!-- Loading script asynchronously -->
