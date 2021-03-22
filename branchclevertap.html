@@ -1,0 +1,240 @@
+
+<html>
+<head>
+  <title>Tealium CleverTap Demo HTML Page</title>
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic);
+
+*{margin: 0px; padding: 0px}
+
+body{
+  background:#2c3e50;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, button{
+  color:#fff;
+  text-align: center;
+  padding: 20px;
+}
+
+p{
+  color:#fff;
+  text-align: center;
+  padding-top: 500px;
+  font-size: 10px;
+}
+
+a{
+   text-decoration:none;
+   color:#fff;
+}
+
+a:hover{
+   color:#2ecc71;
+}
+
+.main{
+  width: 100%;
+}
+
+.sub-main{
+  width: 30%;
+  margin:22px;
+  float: left;
+}
+
+.button-one, .button-two, .button-three{
+  text-align: center;
+  cursor: pointer;
+  font-size:24px;
+  margin: 0 0 0 100px;
+}
+
+
+
+/*Button One*/
+.button-one {
+  padding:20px 60px;
+  outline: none;
+  background-color: #27ae60;
+  border: none;
+  border-radius:5px;
+  box-shadow: 0 9px #95a5a6;
+}
+
+.button-one:hover{
+  background-color: #2ecc71;
+}
+
+.button-one:active {
+  background-color: #2ecc71;
+  box-shadow: 0 5px #95a5a6;
+  transform: translateY(4px);
+}
+
+
+/*Button Two*/
+.button-two {
+  border-radius: 4px;
+  background-color:#d35400;
+  border: none;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+}
+
+
+.button-two span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-two span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-two:hover span {
+  padding-right: 25px;
+}
+
+.button-two:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/*Button Three*/
+.button-three {
+    position: relative;
+    background-color: #f39c12;
+    border: none;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.button-three:hover{
+   background:#fff;
+   box-shadow:0px 2px 10px 5px #97B1BF;
+   color:#000;
+}
+
+.button-three:after {
+    content: "";
+    background: #f1c40f;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button-three:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+var utag_data = {
+  page_name : "1", // Contains a user-friendly name for the page.
+  page_section : "2", // Contains a user-friendly page section, e.g. 'configuration section'.
+  page_category : "3", // Contains a user-friendly page category, e.g. 'appliance page'.
+  page_subcategory : "4" // Contains a user-friendly page subcategory, e.g. 'refrigerator page'.
+  
+}
+</script>
+
+<!-- Loading script asynchronously -->
+<script type="text/javascript">
+    (function(a,b,c,d){
+    a='https://tags.tiqcdn.com/utag/growthwave-sandbox/di-aaqib/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+</script>
+
+<h1>CleverTap Branch Demo</h1>
+<!-- 
+<p>The script is generated dynamically based on your configuration selections 
+and includes your Data Layer. The Data Layer is generated from the variables 
+listed in the Variables tab.</p>
+
+<h2>To place the code on your website:</h2>
+
+<ol>
+    <li> Ensure you are are getting the code for the correct environment by 
+looking at the navigation on the left. (Dev, QA, Prod)</li>
+    <li> Click on the "Tealium Script" tab above.</li>
+    <li> Click and drag to select all the code.</li>
+    <li> Copy the code.</li>
+    <li> Navigate to the appropriate webpage, and paste 
+the code after the opening BODY tag.</li>
+</ol> -->
+  
+<div>
+  
+
+  <div class="main">
+    <div class="sub-main">
+      <button class="button-one">Flight Searched</button>
+    </div>
+    <div class="sub-main">
+      <button class="button-one">Hotel Booked</button>
+    </div>
+    <div class="sub-main">
+      <button class="button-three">Trip Completed</button>
+    </div>
+    </p>
+  </div>
+</div>
+  
+  
+<script type="text/javascript">
+  
+
+branch.setIdentity('MeenakshiClevertap');
+
+
+var custom_data = {
+   "amount": "100",
+   "category": "shoes"
+};
+
+branch.logEvent(
+    'Added to Cart',
+    custom_data,
+    function(err) { console.log(err); }
+);
+
+branch.logEvent(
+    'ADD_TO_CART',
+    custom_data,
+    function(err) { console.log(err); }
+);
+
+
+</script>
+  
+
+</body>
+</html>    
