@@ -1,0 +1,3 @@
+{
+  "subject" : "Hi {{ Profile.first_name | default: \"harsh\" }}"
+}
