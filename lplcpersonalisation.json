@@ -1,4 +1,3 @@
 {
-  "pk":"Hi {{ userAttribute['friends'] }}",
   "pk2":"{{ city }}"
 }
