@@ -1,2 +1,711 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CleverTap Dashboard · Snapshot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #202773;
+      --accent: #5565ff;
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --neutral: #9ca3af;
+      --radius-lg: 18px;
+      --radius-sm: 10px;
+      --nav-height: 68px;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: #1f2937;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: var(--nav-height);
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      box-shadow: 0 4px 16px rgba(23, 35, 90, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #50d3c4, #1dcad3);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #44d29a;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .search-bar {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: inherit;
+      font-size: 14px;
+      width: 160px;
+    }
+
+    .search-bar span {
+      font-size: 15px;
+      margin-right: 8px;
+    }
+
+    .icon-button {
+      border: none;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      cursor: default;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: #4b5563;
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - var(--nav-height));
+    }
+
+    aside.sidebar {
+      width: var(--sidebar-width);
+      background: #ffffff;
+      border-right: 1px solid var(--border);
+      padding: 32px 22px 48px;
+      position: sticky;
+      top: var(--nav-height);
+      align-self: flex-start;
+      height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .nav-section h3 {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1f2937;
+      transition: background 0.2s ease, color 0.2s ease;
+      background: transparent;
+    }
+
+    .nav-link .bubble {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: rgba(85, 101, 255, 0.12);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .nav-link:hover {
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, rgba(85, 101, 255, 0.16), rgba(85, 101, 255, 0.32));
+      color: #1e1b4b;
+      box-shadow: inset 0 0 0 1px rgba(85, 101, 255, 0.4);
+    }
+
+    main.content {
+      flex: 1;
+      padding: 38px 48px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .section-header h1 {
+      font-size: 26px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .section-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chip-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border: 1px solid rgba(32, 39, 115, 0.18);
+      background: #fff;
+      color: #1f2937;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 6px 18px rgba(32, 39, 115, 0.25);
+    }
+
+    .cards-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+    }
+
+    .card header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .metric {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .metric-value {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .metric-change {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.06);
+      color: var(--neutral);
+    }
+
+    .metric-change.up {
+      background: rgba(22, 163, 74, 0.12);
+      color: var(--success);
+    }
+
+    .metric-change.down {
+      background: rgba(220, 38, 38, 0.12);
+      color: var(--danger);
+    }
+
+    .metric-footer {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .chart-card {
+      padding: 26px 26px 30px;
+    }
+
+    .chart-container {
+      background: linear-gradient(180deg, rgba(85, 101, 255, 0.08), rgba(85, 101, 255, 0));
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .chart-container svg {
+      width: 100%;
+      height: 180px;
+    }
+
+    .chart-legend {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(229, 231, 235, 0), rgba(229, 231, 235, 0.8), rgba(229, 231, 235, 0));
+    }
+
+    .footnote {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    @media (max-width: 1080px) {
+      aside.sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 22px;
+      }
+
+      .nav-section {
+        flex: 1 1 180px;
+      }
+
+      .layout {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 20px 22px;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .topbar-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .search-bar {
+        flex: 1;
+      }
+
+      .search-bar input {
+        width: 100%;
+      }
+
+      main.content {
+        padding: 28px 20px 48px;
+      }
+
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">CT</div>
+      <div class="brand-meta">
+        <span>CleverTap Biz</span>
+        <span class="pill">India · Production</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" placeholder="Search dashboards, users, journeys…" disabled>
+      </div>
+      <button class="icon-button" type="button" disabled>?</button>
+      <button class="icon-button" type="button" disabled>🔔</button>
+      <div class="avatar">HB</div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-section">
+        <h3>Overview</h3>
+        <nav class="nav-group">
+          <a class="nav-link active" href="#snapshot">
+            <span class="bubble">📊</span>
+            Snapshot
+          </a>
+          <a class="nav-link" href="#">
+            <span class="bubble">🧭</span>
+            Boards
+          </a>
+          <a class="nav-link" href="#">
+            <span class="bubble">⚡</span>
+            Lifecycle Optimizer
+          </a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Understand</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">🧑</span>Segments</a>
+          <a class="nav-link" href="#"><span class="bubble">👥</span>People</a>
+          <a class="nav-link" href="#"><span class="bubble">🧭</span>Journeys</a>
+          <a class="nav-link" href="#"><span class="bubble">📈</span>Events</a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Engage</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">💬</span>Campaigns</a>
+          <a class="nav-link" href="#"><span class="bubble">✉️</span>Messages</a>
+          <a class="nav-link" href="#"><span class="bubble">📆</span>Schedules</a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Optimize</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">🧪</span>A/B Tests</a>
+          <a class="nav-link" href="#"><span class="bubble">🎯</span>Recommendations</a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Configure</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">⚙️</span>Project Settings</a>
+          <a class="nav-link" href="#"><span class="bubble">🔐</span>Access Control</a>
+          <a class="nav-link" href="#"><span class="bubble">📜</span>Audit Logs</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="snapshot">
+        <div class="section-header">
+          <div>
+            <h1>Snapshot</h1>
+            <p>Mobile app users · Updated 15 Nov 2023</p>
+          </div>
+          <div class="chip-group">
+            <span class="chip active">Last 7 Days</span>
+            <span class="chip">Last 30 Days</span>
+            <span class="chip">Custom Range</span>
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <header>
+              <span class="card-title">Daily Active Users</span>
+              <span class="card-subtitle">Last synced: Nov 15, 09:30 IST</span>
+            </header>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-change neutral">0% vs prior</span>
+            </div>
+            <div class="metric-footer">
+              <span>All devices</span>
+              <span>Rolling 24 hrs</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <header>
+              <span class="card-title">Weekly Active Users</span>
+              <span class="card-subtitle">Last synced: Nov 15, 09:30 IST</span>
+            </header>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-change neutral">0% vs prior</span>
+            </div>
+            <div class="metric-footer">
+              <span>All sources</span>
+              <span>Past 7 days</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <header>
+              <span class="card-title">Monthly Active Users</span>
+              <span class="card-subtitle">Last synced: Nov 15, 09:30 IST</span>
+            </header>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-change down">-2.4% vs prior</span>
+            </div>
+            <div class="metric-footer">
+              <span>Rolling 30 days</span>
+              <span>All platforms</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <header>
+              <span class="card-title">Total Active Users</span>
+              <span class="card-subtitle">Last synced: Nov 15, 09:30 IST</span>
+            </header>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-change neutral">No change</span>
+            </div>
+            <div class="metric-footer">
+              <span>All cohorts</span>
+              <span>Year to date</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <header>
+              <span class="card-title">New Activations</span>
+              <span class="card-subtitle">Last synced: Nov 15, 09:30 IST</span>
+            </header>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-change up">+8.1% vs prior</span>
+            </div>
+            <div class="metric-footer">
+              <span>Onboarding flow</span>
+              <span>Past 7 days</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <header>
+              <span class="card-title">App Uninstalls</span>
+              <span class="card-subtitle">Last synced: Nov 15, 09:30 IST</span>
+            </header>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-change down">-1.2% vs prior</span>
+            </div>
+            <div class="metric-footer">
+              <span>Android + iOS</span>
+              <span>Past 7 days</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <div class="section-header">
+          <div>
+            <h1>Daily Active Users (All sources)</h1>
+            <p>Past 30 days performance</p>
+          </div>
+          <div class="chip-group">
+            <span class="chip active">Users</span>
+            <span class="chip">Sessions</span>
+            <span class="chip">Conversions</span>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <article class="card chart-card">
+            <header>
+              <span class="card-title">User Activity</span>
+              <span class="card-subtitle">Rolling 30-day trend · Updated hourly</span>
+            </header>
+            <div class="chart-container">
+              <svg viewBox="0 0 500 180" preserveAspectRatio="none">
+                <polyline points="0,140 40,110 80,130 120,90 160,120 200,70 240,95 280,60 320,85 360,45 400,75 440,50 480,68"
+                  fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="0,150 40,138 80,145 120,135 160,142 200,128 240,134 280,118 320,130 360,110 400,120 440,112 480,124"
+                  fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+                <line x1="0" y1="150" x2="500" y2="150" stroke="rgba(148, 163, 184, 0.25)" stroke-width="1" stroke-dasharray="6 6"/>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-item" style="color:#2563eb;"><span class="legend-dot"></span>Mobile DAU</span>
+              <span class="legend-item" style="color:#10b981;"><span class="legend-dot"></span>Web DAU</span>
+              <span class="legend-item">Showing last refresh at 09:30</span>
+            </div>
+            <div class="footnote">
+              <strong>560</strong>
+              <span>vs 560 previous period (0%)</span>
+            </div>
+          </article>
+
+          <article class="card chart-card">
+            <header>
+              <span class="card-title">New vs Returning Users</span>
+              <span class="card-subtitle">Conversion to repeat usage</span>
+            </header>
+            <div class="chart-container">
+              <svg viewBox="0 0 500 180" preserveAspectRatio="none">
+                <polyline points="0,160 40,140 80,150 120,130 160,145 200,125 240,138 280,120 320,135 360,118 400,130 440,122 480,132"
+                  fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="0,170 40,168 80,169 120,167 160,165 200,162 240,164 280,160 320,158 360,156 400,157 440,154 480,155"
+                  fill="none" stroke="#f97316" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <line x1="0" y1="165" x2="500" y2="165" stroke="rgba(148, 163, 184, 0.25)" stroke-width="1" stroke-dasharray="6 6"/>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-item" style="color:#7c3aed;"><span class="legend-dot"></span>Returning Users</span>
+              <span class="legend-item" style="color:#f97316;"><span class="legend-dot"></span>New Users</span>
+              <span class="legend-item">1:1 ratio goal achieved</span>
+            </div>
+            <div class="footnote">
+              <strong>559</strong>
+              <span>100% Returning · 0% New</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
 </html>
