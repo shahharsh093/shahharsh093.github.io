@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CleverTap Dashboard · Agent & Campaign Setup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #202773;
+      --accent: #5565ff;
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #d97706;
+      --neutral: #9ca3af;
+      --radius-lg: 18px;
+      --radius-sm: 10px;
+      --nav-height: 68px;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: #1f2937;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: var(--nav-height);
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      box-shadow: 0 4px 16px rgba(23, 35, 90, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #50d3c4, #1dcad3);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #44d29a;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .search-bar {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: inherit;
+      font-size: 14px;
+      width: 160px;
+    }
+
+    .search-bar span {
+      font-size: 15px;
+      margin-right: 8px;
+    }
+
+    .icon-button {
+      border: none;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      cursor: default;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: #4b5563;
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - var(--nav-height));
+    }
+
+    aside.sidebar {
+      width: var(--sidebar-width);
+      background: #ffffff;
+      border-right: 1px solid var(--border);
+      padding: 32px 22px 48px;
+      position: sticky;
+      top: var(--nav-height);
+      align-self: flex-start;
+      height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .nav-section h3 {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1f2937;
+      transition: background 0.2s ease, color 0.2s ease;
+      background: transparent;
+    }
+
+    .nav-link .bubble {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: rgba(85, 101, 255, 0.12);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .nav-link:hover {
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, rgba(85, 101, 255, 0.16), rgba(85, 101, 255, 0.32));
+      color: #1e1b4b;
+      box-shadow: inset 0 0 0 1px rgba(85, 101, 255, 0.4);
+    }
+
+    main.content {
+      flex: 1;
+      padding: 38px 48px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .breadcrumb span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .section-header h1 {
+      font-size: 26px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .section-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(85, 101, 255, 0.14);
+      color: var(--accent);
+    }
+
+    .status-badge.success {
+      background: rgba(22, 163, 74, 0.12);
+      color: var(--success);
+    }
+
+    .status-badge.warning {
+      background: rgba(251, 191, 36, 0.18);
+      color: var(--warning);
+    }
+
+    .status-badge.neutral {
+      background: rgba(148, 163, 184, 0.18);
+      color: var(--muted);
+    }
+
+    .summary-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .card header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .metric-value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: rgba(85, 101, 255, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: inherit;
+      transition: width 0.3s ease;
+    }
+
+    .detail-layout {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    }
+
+    .detail-card {
+      gap: 20px;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px 20px;
+      margin: 0;
+    }
+
+    dt {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    dd {
+      margin: 4px 0 0;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .inline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(85, 101, 255, 0.14);
+      color: var(--accent);
+    }
+
+    .tag.secondary {
+      background: rgba(85, 101, 255, 0.08);
+      color: #1f2937;
+    }
+
+    .tag.warning {
+      background: rgba(217, 119, 6, 0.18);
+      color: var(--warning);
+    }
+
+    .tag.light {
+      background: rgba(148, 163, 184, 0.18);
+      color: var(--muted);
+    }
+
+    .timeline-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .timeline-item time {
+      font-size: 12px;
+      color: var(--muted);
+      width: 72px;
+      flex-shrink: 0;
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 6px;
+      box-shadow: 0 0 0 4px rgba(85, 101, 255, 0.14);
+      flex-shrink: 0;
+    }
+
+    .timeline-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .timeline-content strong {
+      font-size: 14px;
+    }
+
+    .note-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .data-table thead th {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0 0 12px;
+    }
+
+    .data-table tbody tr {
+      background: rgba(248, 250, 252, 0.8);
+      border-radius: 12px;
+    }
+
+    .data-table tbody tr + tr td {
+      padding-top: 14px;
+    }
+
+    .data-table td {
+      padding: 14px 16px;
+      font-size: 14px;
+      border-top: 1px solid rgba(229, 231, 235, 0.6);
+    }
+
+    .data-table tbody tr:first-child td {
+      border-top: none;
+    }
+
+    .table-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .channel-card {
+      padding: 20px;
+      gap: 14px;
+    }
+
+    .channel-card header span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .channel-card header span .bubble {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: rgba(85, 101, 255, 0.16);
+    }
+
+    .channel-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .progress-tracker {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .progress-tracker li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 22px;
+      border-radius: var(--radius-lg);
+      background: var(--card-bg);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    .step-index {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(85, 101, 255, 0.18);
+      color: var(--accent);
+      font-weight: 600;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .progress-tracker li.done .step-index {
+      background: rgba(22, 163, 74, 0.14);
+      color: var(--success);
+    }
+
+    .progress-tracker li.active .step-index {
+      background: rgba(85, 101, 255, 0.24);
+      color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(85, 101, 255, 0.16);
+    }
+
+    .step-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .step-body h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .step-body p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .step-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .insight-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .insight-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .insight-card h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .insight-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .insight-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .journey-card {
+      padding: 28px 26px;
+      gap: 24px;
+    }
+
+    .journey-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .journey-node {
+      flex: 1 1 160px;
+      min-width: 160px;
+      background: linear-gradient(135deg, rgba(85, 101, 255, 0.12), rgba(85, 101, 255, 0.04));
+      border-radius: 16px;
+      padding: 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .journey-node strong {
+      font-size: 14px;
+    }
+
+    .journey-node span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .journey-node:not(:last-child)::after {
+      content: "➜";
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: rgba(31, 41, 55, 0.3);
+    }
+
+    .journey-footnote {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .split-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13px;
+    }
+
+    .schedule-table thead th {
+      text-align: left;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 12px;
+    }
+
+    .schedule-table tbody td {
+      padding: 10px 0;
+      border-top: 1px solid rgba(229, 231, 235, 0.6);
+    }
+
+    .schedule-table tbody tr:first-child td {
+      border-top: none;
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checklist li::before {
+      content: "✔";
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    @media (max-width: 1080px) {
+      aside.sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 22px;
+      }
+
+      .nav-section {
+        flex: 1 1 180px;
+      }
+
+      .layout {
+        flex-direction: column;
+      }
+
+      .detail-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 20px 22px;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .topbar-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .search-bar {
+        flex: 1;
+      }
+
+      main.content {
+        padding: 28px 20px 48px;
+      }
+
+      .summary-grid,
+      .channel-grid,
+      .insight-grid,
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-node:not(:last-child)::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">CT</div>
+      <div class="brand-meta">
+        <span>CleverTap Biz</span>
+        <span class="pill">India · Production</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" placeholder="Search dashboards, users, journeys…" disabled>
+      </div>
+      <button class="icon-button" type="button" disabled>?</button>
+      <button class="icon-button" type="button" disabled>🔔</button>
+      <div class="avatar">HB</div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-section">
+        <h3>Overview</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="index.html#snapshot">
+            <span class="bubble">📊</span>
+            Snapshot
+          </a>
+          <a class="nav-link" href="#">
+            <span class="bubble">🧭</span>
+            Boards
+          </a>
+          <a class="nav-link" href="#">
+            <span class="bubble">⚡</span>
+            Lifecycle Optimizer
+          </a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Understand</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">🧑</span>Segments</a>
+          <a class="nav-link" href="#"><span class="bubble">👥</span>People</a>
+          <a class="nav-link" href="#"><span class="bubble">🧭</span>Journeys</a>
+          <a class="nav-link" href="#"><span class="bubble">📈</span>Events</a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Engage</h3>
+        <nav class="nav-group">
+          <a class="nav-link active" href="#agent-setup"><span class="bubble">🤖</span>Agents</a>
+          <a class="nav-link" href="#campaign-setup"><span class="bubble">💬</span>Campaigns</a>
+          <a class="nav-link" href="#scheduling"><span class="bubble">✉️</span>Messages</a>
+          <a class="nav-link" href="#scheduling"><span class="bubble">📆</span>Schedules</a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Optimize</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">🧪</span>A/B Tests</a>
+          <a class="nav-link" href="#"><span class="bubble">🎯</span>Recommendations</a>
+        </nav>
+      </div>
+
+      <div class="nav-section">
+        <h3>Configure</h3>
+        <nav class="nav-group">
+          <a class="nav-link" href="#"><span class="bubble">⚙️</span>Project Settings</a>
+          <a class="nav-link" href="#"><span class="bubble">🔐</span>Access Control</a>
+          <a class="nav-link" href="#"><span class="bubble">📜</span>Audit Logs</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section>
+        <div class="breadcrumb">
+          <span>Home</span>›<span>Engage</span>›<span>Agent & Campaign Setup</span>
+        </div>
+        <div class="section-header">
+          <div>
+            <h1>Agent & Campaign Setup</h1>
+            <p>Automation workspace · Last updated 15 Nov 2023 · 09:30 IST</p>
+          </div>
+          <div class="inline-tags">
+            <span class="status-badge success">All systems healthy</span>
+            <span class="status-badge">4 active workflows</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary-grid">
+        <article class="card">
+          <header>
+            <span class="card-title">Agent Provisioning</span>
+            <span class="status-badge success">Active</span>
+          </header>
+          <div class="metric-value">Orion CX-01</div>
+          <p class="card-subtitle">Primary orchestration agent connected to 3 data streams.</p>
+          <div class="progress" aria-hidden="true">
+            <div class="progress-bar" style="width: 100%;"></div>
+          </div>
+          <div class="card-subtitle">Provisioning complete · Sync interval: 15 mins</div>
+        </article>
+
+        <article class="card">
+          <header>
+            <span class="card-title">Campaign Blueprints</span>
+            <span class="status-badge">72% ready</span>
+          </header>
+          <div class="metric-value">5 of 7</div>
+          <p class="card-subtitle">Templates reviewed by marketing · awaiting analytics sign-off.</p>
+          <div class="progress" aria-hidden="true">
+            <div class="progress-bar" style="width: 72%;"></div>
+          </div>
+          <div class="card-subtitle">Next milestone · Conversion uplift experiment</div>
+        </article>
+
+        <article class="card">
+          <header>
+            <span class="card-title">Channel Integrations</span>
+            <span class="status-badge success">Synced</span>
+          </header>
+          <div class="metric-value">4 channels</div>
+          <p class="card-subtitle">Push · Email · SMS · WhatsApp</p>
+          <div class="progress" aria-hidden="true">
+            <div class="progress-bar" style="width: 90%;"></div>
+          </div>
+          <div class="card-subtitle">Real-time delivery SLA 99.4%</div>
+        </article>
+
+        <article class="card">
+          <header>
+            <span class="card-title">Automation Health</span>
+            <span class="status-badge warning">Action needed</span>
+          </header>
+          <div class="metric-value">2 alerts</div>
+          <p class="card-subtitle">Webhook retry queue growing · Review failover settings.</p>
+          <div class="progress" aria-hidden="true">
+            <div class="progress-bar" style="width: 38%; background: var(--danger);"></div>
+          </div>
+          <div class="card-subtitle">Escalated to DevOps · ETA 3 hrs</div>
+        </article>
+      </section>
+
+      <section id="agent-setup" class="card detail-card">
+        <header>
+          <span class="card-title">Agent Setup</span>
+          <span class="status-badge success">In sync</span>
+        </header>
+        <p class="card-subtitle">Define and monitor the automation agent responsible for orchestrating cross-channel campaigns.</p>
+        <div class="detail-layout">
+          <article class="card detail-card">
+            <header>
+              <span class="card-title">Agent profile</span>
+              <span class="status-badge">v2.3.1</span>
+            </header>
+            <dl>
+              <div>
+                <dt>Agent ID</dt>
+                <dd>orion-cx-01</dd>
+              </div>
+              <div>
+                <dt>Owner</dt>
+                <dd>Ananya Rao · Marketing Ops</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="tag">Live</span></dd>
+              </div>
+              <div>
+                <dt>Created</dt>
+                <dd>04 Oct 2023 · 11:20 IST</dd>
+              </div>
+              <div>
+                <dt>Last Sync</dt>
+                <dd>15 Nov 2023 · 09:30 IST</dd>
+              </div>
+              <div>
+                <dt>Time zone</dt>
+                <dd>Asia/Kolkata (UTC +05:30)</dd>
+              </div>
+              <div>
+                <dt>Authorized scopes</dt>
+                <dd class="inline-tags">
+                  <span class="tag secondary">User Events</span>
+                  <span class="tag secondary">Product Catalog</span>
+                  <span class="tag secondary">Offers</span>
+                </dd>
+              </div>
+              <div>
+                <dt>Compliance</dt>
+                <dd><span class="tag light">GDPR ready</span></dd>
+              </div>
+            </dl>
+            <ul class="note-list">
+              <li>Custom throttling: max 2 push per 24 hrs per user.</li>
+              <li>Fallback language: English · auto translate enabled for ES/HI.</li>
+            </ul>
+          </article>
+
+          <article class="card detail-card">
+            <header>
+              <span class="card-title">Recent activity</span>
+              <span class="status-badge">Automation logs</span>
+            </header>
+            <ul class="timeline-list">
+              <li class="timeline-item">
+                <time>09:30</time>
+                <span class="timeline-dot"></span>
+                <div class="timeline-content">
+                  <strong>Synced campaign audiences</strong>
+                  <p class="card-subtitle">12 cohorts refreshed from Segment CDP</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <time>09:00</time>
+                <span class="timeline-dot"></span>
+                <div class="timeline-content">
+                  <strong>Webhook retry cleared</strong>
+                  <p class="card-subtitle">Pending notifications flushed · 0 failures</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <time>08:15</time>
+                <span class="timeline-dot"></span>
+                <div class="timeline-content">
+                  <strong>Agent configuration updated</strong>
+                  <p class="card-subtitle">New frequency cap applied for festive cohort</p>
+                </div>
+              </li>
+            </ul>
+            <div class="inline-tags">
+              <span class="status-badge">Audit trail retained 90 days</span>
+              <span class="status-badge neutral">Latency P95 · 280ms</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card detail-card">
+        <header>
+          <span class="card-title">Linked campaigns</span>
+          <span class="status-badge">Active · 4</span>
+        </header>
+        <table class="data-table" role="grid">
+          <thead>
+            <tr>
+              <th scope="col">Campaign</th>
+              <th scope="col">Channel</th>
+              <th scope="col">Status</th>
+              <th scope="col">Last run</th>
+              <th scope="col">Next milestone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Loyalty Reactivation</td>
+              <td>Push</td>
+              <td><span class="tag">Live</span></td>
+              <td>15 Nov · 09:15</td>
+              <td>Trigger experiment B</td>
+            </tr>
+            <tr>
+              <td>Winter Drops Teaser</td>
+              <td>Email</td>
+              <td><span class="tag secondary">Scheduled</span></td>
+              <td>14 Nov · 18:00</td>
+              <td>Creative QA sign-off</td>
+            </tr>
+            <tr>
+              <td>Abandoned Cart Concierge</td>
+              <td>WhatsApp</td>
+              <td><span class="tag">Live</span></td>
+              <td>15 Nov · 08:40</td>
+              <td>Translate fallback copy</td>
+            </tr>
+            <tr>
+              <td>Repeat Purchase Nudge</td>
+              <td>SMS</td>
+              <td><span class="tag warning">Paused</span></td>
+              <td>13 Nov · 21:10</td>
+              <td>Compliance review</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-foot">
+          <span>Showing connected campaigns · updated every 15 mins</span>
+          <span>View full campaign catalog →</span>
+        </div>
+      </section>
+
+      <section class="channel-grid">
+        <article class="card channel-card">
+          <header>
+            <span><span class="bubble">📱</span>Push notifications</span>
+            <span class="status-badge success">Operational</span>
+          </header>
+          <ul>
+            <li>FCM + APNs credentials verified 6 hrs ago</li>
+            <li>Rich media templates synced · 5 variants</li>
+            <li>Fallback to SMS if undelivered in 15 mins</li>
+          </ul>
+        </article>
+        <article class="card channel-card">
+          <header>
+            <span><span class="bubble">✉️</span>Email</span>
+            <span class="status-badge success">Operational</span>
+          </header>
+          <ul>
+            <li>SPF/DKIM aligned · Domain score 98</li>
+            <li>Send window 08:00 – 21:00 (user local)</li>
+            <li>Primary IP warm-up complete · 0.4% bounce</li>
+          </ul>
+        </article>
+        <article class="card channel-card">
+          <header>
+            <span><span class="bubble">💬</span>SMS & WhatsApp</span>
+            <span class="status-badge warning">Monitor</span>
+          </header>
+          <ul>
+            <li>DLT template refresh pending for 12 variants</li>
+            <li>WhatsApp 24 hr session window auto tracked</li>
+            <li>Escalation threshold: 5% failure</li>
+          </ul>
+        </article>
+        <article class="card channel-card">
+          <header>
+            <span><span class="bubble">🔁</span>Webhooks</span>
+            <span class="status-badge warning">Retrying</span>
+          </header>
+          <ul>
+            <li>2 endpoints degraded · fallback to cached payloads</li>
+            <li>Next health check in 12 mins</li>
+            <li>Notify DevOps if queue > 500</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="campaign-setup">
+        <header class="section-header">
+          <div>
+            <h1>Campaign setup flow</h1>
+            <p>Track every configuration step before launch.</p>
+          </div>
+          <span class="status-badge">Orchestration mode: Assisted</span>
+        </header>
+        <ol class="progress-tracker">
+          <li class="done">
+            <div class="step-index">1</div>
+            <div class="step-body">
+              <h4>Define objective</h4>
+              <p>Primary goal: Reactivate dormant cohort within 7 days.</p>
+              <div class="step-meta">
+                <span class="tag secondary">Owner · Growth</span>
+                <span class="tag secondary">Completed 14 Nov</span>
+              </div>
+            </div>
+          </li>
+          <li class="done">
+            <div class="step-index">2</div>
+            <div class="step-body">
+              <h4>Select audience</h4>
+              <p>Segments imported from Segment & CleverTap live queries.</p>
+              <div class="step-meta">
+                <span class="tag secondary">3 segments</span>
+                <span class="tag secondary">Size · 126k users</span>
+              </div>
+            </div>
+          </li>
+          <li class="active">
+            <div class="step-index">3</div>
+            <div class="step-body">
+              <h4>Design journey</h4>
+              <p>Configure multi-channel path with conditional waits & fallbacks.</p>
+              <div class="step-meta">
+                <span class="tag secondary">ETA · 15 Nov</span>
+                <span class="tag light">Need QA approval</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="step-index">4</div>
+            <div class="step-body">
+              <h4>Launch & monitor</h4>
+              <p>Auto deploy once readiness checklist is green.</p>
+              <div class="step-meta">
+                <span class="tag light">Pending</span>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <div class="insight-grid">
+          <article class="insight-card">
+            <h3>Audience configuration</h3>
+            <p>Mix high intent users with churn-risk cohorts. Real-time sync ensures events within last 2 hrs trigger the journey.</p>
+            <div class="insight-metrics">
+              <span class="tag secondary">Entry criteria · 5 filters</span>
+              <span class="tag secondary">Exclusions · VIP tier</span>
+            </div>
+          </article>
+          <article class="insight-card">
+            <h3>Trigger logic</h3>
+            <p>Event-based trigger: `checkout_abandoned`. Delay start by 45 mins to allow natural conversion before contacting.</p>
+            <div class="insight-metrics">
+              <span class="tag secondary">Grace window · 45 mins</span>
+              <span class="tag secondary">Time fences · 08:00-22:00</span>
+            </div>
+          </article>
+          <article class="insight-card">
+            <h3>Primary KPI & guardrails</h3>
+            <p>Success metric: Repeat purchase within 5 days. Guardrail monitors unsubscribe rate & complaint threshold.</p>
+            <div class="insight-metrics">
+              <span class="tag secondary">Goal ≥ 14% uplift</span>
+              <span class="tag light">Unsubscribe cap 0.6%</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <article class="card journey-card">
+          <header>
+            <span class="card-title">Journey preview</span>
+            <span class="status-badge">Visual builder</span>
+          </header>
+          <div class="journey-flow">
+            <div class="journey-node">
+              <strong>Trigger</strong>
+              <span>Checkout abandoned · 45 min delay</span>
+            </div>
+            <div class="journey-node">
+              <strong>Agent decision</strong>
+              <span>If cart value ≥ ₹2,500 send premium offer</span>
+            </div>
+            <div class="journey-node">
+              <strong>Push message</strong>
+              <span>Dynamic image · personalized CTA</span>
+            </div>
+            <div class="journey-node">
+              <strong>Wait block</strong>
+              <span>24 hrs or until event `purchase_completed`</span>
+            </div>
+            <div class="journey-node">
+              <strong>WhatsApp follow-up</strong>
+              <span>Template `cart_assist` with quick reply options</span>
+            </div>
+          </div>
+          <div class="journey-footnote">
+            <span>Variant A/B weighting: 70% · 30%</span>
+            <span>Estimated completion time: 3 days</span>
+          </div>
+        </article>
+      </section>
+
+      <section id="scheduling" class="split-grid">
+        <article class="card">
+          <header>
+            <span class="card-title">Scheduling rules</span>
+            <span class="status-badge">Regional rollout</span>
+          </header>
+          <dl>
+            <div>
+              <dt>Start date</dt>
+              <dd>16 Nov 2023 · 07:00 IST</dd>
+            </div>
+            <div>
+              <dt>End date</dt>
+              <dd>30 Nov 2023 · 23:00 IST</dd>
+            </div>
+            <div>
+              <dt>Frequency cap</dt>
+              <dd>Max 3 touches per user / week</dd>
+            </div>
+            <div>
+              <dt>Quiet hours</dt>
+              <dd>22:00 – 07:00 (user local)</dd>
+            </div>
+          </dl>
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th scope="col">Channel</th>
+                <th scope="col">Window</th>
+                <th scope="col">Fallback</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Push</td>
+                <td>08:00 – 20:00</td>
+                <td>SMS after 15 mins</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>09:00 – 19:00</td>
+                <td>Retry next business day</td>
+              </tr>
+              <tr>
+                <td>WhatsApp</td>
+                <td>10:00 – 22:00</td>
+                <td>Notify agent if outside 24 hr window</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <header>
+            <span class="card-title">Approval & launch checklist</span>
+            <span class="status-badge">3 of 5 complete</span>
+          </header>
+          <ul class="checklist">
+            <li>Creative review signed off by brand team</li>
+            <li>Deliverability tests passed across channels</li>
+            <li>Tracking parameters mapped to analytics</li>
+            <li>Data privacy review pending</li>
+            <li>Finance approval for incentives pending</li>
+          </ul>
+          <div class="inline-tags">
+            <span class="status-badge warning">Requires compliance sign-off</span>
+            <span class="status-badge neutral">Next review · 15 Nov 17:00</span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
