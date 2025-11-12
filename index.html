@@ -696,6 +696,267 @@
       align-items: baseline;
     }
 
+    #personas {
+      scroll-margin-top: calc(var(--nav-height) + 20px);
+    }
+
+    .persona-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 26px 0;
+    }
+
+    .persona-summary-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      border: 1px solid rgba(32, 39, 115, 0.1);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .persona-summary-card span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .persona-summary-card strong {
+      font-size: 18px;
+    }
+
+    .persona-panels {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .personas-panel {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(32, 39, 115, 0.1);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .personas-panel header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .personas-panel header h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
+    }
+
+    .status-positive {
+      background: rgba(22, 163, 74, 0.12);
+      color: var(--success);
+    }
+
+    .status-warning {
+      background: rgba(249, 115, 22, 0.12);
+      color: #f97316;
+    }
+
+    .status-neutral {
+      background: rgba(91, 103, 131, 0.12);
+      color: var(--neutral);
+    }
+
+    .persona-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: linear-gradient(180deg, rgba(85, 101, 255, 0.06), rgba(85, 101, 255, 0));
+    }
+
+    .persona-card header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .persona-card h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .persona-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .persona-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .persona-metrics dl {
+      margin: 0;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      border: 1px solid rgba(32, 39, 115, 0.08);
+    }
+
+    .persona-metrics dt {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .persona-metrics dd {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .persona-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .persona-actions button {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: rgba(32, 39, 115, 0.1);
+      color: var(--primary);
+    }
+
+    .persona-actions button.approve {
+      background: rgba(22, 163, 74, 0.12);
+      color: var(--success);
+    }
+
+    .persona-actions button.reject {
+      background: rgba(220, 38, 38, 0.12);
+      color: var(--danger);
+    }
+
+    .inline-actions {
+      display: inline-flex;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .inline-actions button {
+      border: none;
+      background: none;
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .persona-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .persona-table thead {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .persona-table th,
+    .persona-table td {
+      text-align: left;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.24);
+    }
+
+    .persona-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(32, 39, 115, 0.2);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 14px;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    .form-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .persona-form button[type="submit"] {
+      align-self: flex-start;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(85, 101, 255, 0.3);
     .agents-section {
       display: flex;
       flex-direction: column;
@@ -942,6 +1203,10 @@
         flex: 1 1 180px;
       }
 
+      .persona-panels {
+        flex-direction: column;
+      }
+
       .layout {
         flex-direction: column;
       }
@@ -1016,6 +1281,9 @@
             <span class="bubble">📊</span>
             Snapshot
           </a>
+          <a class="nav-link" href="#personas">
+            <span class="bubble">🧑‍🤝‍🧑</span>
+            Personas
           <a class="nav-link" href="#strategy-agent">
             <span class="bubble">🧠</span>
             Strategy Agent
@@ -1349,6 +1617,205 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section id="personas">
+        <div class="section-header">
+          <div>
+            <h1>Personas</h1>
+            <p>Surface AI-suggested personas alongside your manually curated audiences and monitor alignment with campaign goals.</p>
+          </div>
+          <div class="inline-actions">
+            <button type="button">Download CSV</button>
+            <button type="button">View history</button>
+          </div>
+        </div>
+
+        <div class="persona-summary-grid">
+          <article class="persona-summary-card">
+            <span>Total suggested size</span>
+            <strong>128K members</strong>
+            <span>Across 6 in-flight AI recommendations</span>
+          </article>
+          <article class="persona-summary-card">
+            <span>Goal alignment</span>
+            <strong>82% good fit</strong>
+            <span>Based on the last 14 days</span>
+          </article>
+          <article class="persona-summary-card">
+            <span>Guardrail coverage</span>
+            <strong>5 / 6 configured</strong>
+            <span>Manual overrides required on 1 persona</span>
+          </article>
+        </div>
+
+        <div class="persona-panels">
+          <div class="personas-panel">
+            <header>
+              <h2>AI suggested personas</h2>
+              <span class="status-tag status-positive">Auto-refreshed</span>
+            </header>
+            <p>Review high-confidence recommendations derived from behavioral clusters and approve the ones that map to your lifecycle goals.</p>
+
+            <article class="persona-card">
+              <header>
+                <div>
+                  <h3>Value Seekers</h3>
+                  <p>Likely to convert on price-drop nudges · Updated 2h ago</p>
+                </div>
+                <span class="status-tag status-positive">High fit</span>
+              </header>
+              <div class="persona-metrics">
+                <dl>
+                  <dt>Size</dt>
+                  <dd>42.3K users</dd>
+                </dl>
+                <dl>
+                  <dt>Goal alignment</dt>
+                  <dd>92% towards Revenue</dd>
+                </dl>
+                <dl>
+                  <dt>Guardrails</dt>
+                  <dd>No more than 3 push/week</dd>
+                </dl>
+              </div>
+              <div class="persona-actions">
+                <button class="approve" type="button">Approve</button>
+                <button class="reject" type="button">Reject</button>
+              </div>
+            </article>
+
+            <article class="persona-card">
+              <header>
+                <div>
+                  <h3>First Order Nudgers</h3>
+                  <p>Engaged but dormant in checkout · Updated 3h ago</p>
+                </div>
+                <span class="status-tag status-warning">Needs review</span>
+              </header>
+              <div class="persona-metrics">
+                <dl>
+                  <dt>Size</dt>
+                  <dd>33.1K users</dd>
+                </dl>
+                <dl>
+                  <dt>Goal alignment</dt>
+                  <dd>68% towards Activation</dd>
+                </dl>
+                <dl>
+                  <dt>Guardrails</dt>
+                  <dd>Exclude users with >2 refunds</dd>
+                </dl>
+              </div>
+              <div class="persona-actions">
+                <button class="approve" type="button">Approve</button>
+                <button class="reject" type="button">Reject</button>
+              </div>
+            </article>
+
+            <article class="persona-card">
+              <header>
+                <div>
+                  <h3>Loyalists on Watch</h3>
+                  <p>VIP cohort with declining engagement · Updated yesterday</p>
+                </div>
+                <span class="status-tag status-neutral">In testing</span>
+              </header>
+              <div class="persona-metrics">
+                <dl>
+                  <dt>Size</dt>
+                  <dd>12.6K users</dd>
+                </dl>
+                <dl>
+                  <dt>Goal alignment</dt>
+                  <dd>87% towards Retention</dd>
+                </dl>
+                <dl>
+                  <dt>Guardrails</dt>
+                  <dd>Cap SMS to 1 / 10 days</dd>
+                </dl>
+              </div>
+              <div class="persona-actions">
+                <button class="approve" type="button">Approve</button>
+                <button class="reject" type="button">Reject</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="personas-panel">
+            <header>
+              <h2>Manual personas</h2>
+              <span class="status-tag status-neutral">Owner managed</span>
+            </header>
+            <p>Maintain bespoke audiences created by your marketing team and keep lifecycle guardrails in sync with brand policy.</p>
+
+            <table class="persona-table">
+              <thead>
+                <tr>
+                  <th>Persona</th>
+                  <th>Size</th>
+                  <th>Goal alignment</th>
+                  <th>Guardrails</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Weekend Explorers</td>
+                  <td>9.8K users</td>
+                  <td>Lifecycle: Reactivation</td>
+                  <td>Email only · Promo cap ₹300</td>
+                </tr>
+                <tr>
+                  <td>High AOV Champions</td>
+                  <td>4.1K users</td>
+                  <td>Lifecycle: Loyalty</td>
+                  <td>Personal concierge support</td>
+                </tr>
+                <tr>
+                  <td>New App Installs</td>
+                  <td>23.4K users</td>
+                  <td>Lifecycle: Onboarding</td>
+                  <td>No SMS after midnight</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <form class="persona-form">
+              <h3>Create or edit persona</h3>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="persona-name">Persona name</label>
+                  <input id="persona-name" name="persona-name" type="text" placeholder="e.g. Repeat purchasers" required>
+                </div>
+                <div class="form-field">
+                  <label for="persona-size">Audience size</label>
+                  <input id="persona-size" name="persona-size" type="text" placeholder="Approximate members" required>
+                </div>
+                <div class="form-field">
+                  <label for="persona-stage">Lifecycle stage</label>
+                  <select id="persona-stage" name="persona-stage">
+                    <option>Onboarding</option>
+                    <option>Activation</option>
+                    <option>Reactivation</option>
+                    <option>Retention</option>
+                    <option>Advocacy</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="persona-goal">Goal alignment</label>
+                  <input id="persona-goal" name="persona-goal" type="text" placeholder="Primary KPI or metric">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="persona-guardrails">Guardrails</label>
+                <textarea id="persona-guardrails" name="persona-guardrails" placeholder="Channel limits, message frequency, exclusions..."></textarea>
+              </div>
+              <button type="submit">Save persona</button>
+            </form>
           </div>
         </div>
       </section>
