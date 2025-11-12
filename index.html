@@ -402,6 +402,237 @@
       align-items: baseline;
     }
 
+    .agents-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .agents-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .agent-subsection {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pipeline-columns {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: start;
+    }
+
+    .board-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .board-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(32, 39, 115, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .board-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .board-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .board-card-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 4px 0 0;
+    }
+
+    .board-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .board-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .decision-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .decision-item {
+      background: rgba(32, 39, 115, 0.04);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 120px;
+      flex: 1 1 140px;
+    }
+
+    .decision-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .decision-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1f2937;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .status-indicator:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .status-upcoming {
+      background: rgba(85, 101, 255, 0.15);
+      color: var(--accent);
+    }
+
+    .status-inflight {
+      background: rgba(22, 163, 74, 0.15);
+      color: var(--success);
+    }
+
+    .status-completed {
+      background: rgba(17, 24, 39, 0.08);
+      color: #111827;
+    }
+
+    .progress-meter {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(32, 39, 115, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), #7c3aed);
+    }
+
+    .tooltip-target {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(32, 39, 115, 0.08);
+      color: var(--primary);
+      cursor: default;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .tooltip-content {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111827;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 10px;
+      width: 240px;
+      font-size: 12px;
+      line-height: 1.5;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 5;
+    }
+
+    .tooltip-target:hover .tooltip-content,
+    .tooltip-target:focus-visible .tooltip-content {
+      opacity: 1;
+    }
+
+    .explanation {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .board-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .insight-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .subsection-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+
     @media (max-width: 1080px) {
       aside.sidebar {
         position: static;
@@ -482,6 +713,10 @@
           <a class="nav-link active" href="#snapshot">
             <span class="bubble">📊</span>
             Snapshot
+          </a>
+          <a class="nav-link" href="#agents">
+            <span class="bubble">🤖</span>
+            Agents
           </a>
           <a class="nav-link" href="#">
             <span class="bubble">🧭</span>
@@ -703,6 +938,337 @@
               <span>100% Returning · 0% New</span>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section id="agents" class="agents-section">
+        <div class="section-header">
+          <div>
+            <h1>#agents oversight</h1>
+            <p>Operational alignment for autonomous marketing teams</p>
+          </div>
+          <div class="chip-group">
+            <span class="chip active">All Agents</span>
+            <span class="chip">Guardrails</span>
+            <span class="chip">RL Insights</span>
+          </div>
+        </div>
+
+        <div class="agents-wrapper">
+          <section class="agent-subsection" aria-labelledby="pipeline-heading">
+            <div class="section-header">
+              <div>
+                <h2 id="pipeline-heading" class="subsection-title">Campaign pipeline</h2>
+                <p>Visibility across upcoming, in-flight, and completed executions</p>
+              </div>
+            </div>
+            <div class="pipeline-columns">
+              <div class="board-stack">
+                <header class="board-label">Upcoming</header>
+                <article class="board-card">
+                  <div class="board-card-header">
+                    <div>
+                      <h3 class="board-card-title">Agent Vega</h3>
+                      <p class="board-card-subtitle">Holiday Reactivation Push</p>
+                    </div>
+                    <span class="status-indicator status-upcoming">Upcoming</span>
+                  </div>
+                  <div class="board-body">
+                    <div>
+                      <span class="board-label">Assignment</span>
+                      <p>Rebuild dormant high-LTV cohort with opt-in rich media push journeys before Black Friday.</p>
+                    </div>
+                    <div class="decision-grid">
+                      <div class="decision-item">
+                        <span class="decision-label">Offer</span>
+                        <span class="decision-value">₹150 cashback</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Message</span>
+                        <span class="decision-value">Personalized low-stock alerts</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Channel</span>
+                        <span class="decision-value">Push + In-app</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Time</span>
+                        <span class="decision-value">Nov 20 · 7pm IST</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Frequency</span>
+                        <span class="decision-value">2 touches / week</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="explanation">
+                    <span>Explanation trail</span>
+                    <span class="tooltip-target" tabindex="0" aria-label="Agent Vega explanation">
+                      ℹ️
+                      <span class="tooltip-content">Similarity scores to the 2023 winter revival playbook exceeded 0.82, so the agent cloned the cadence while tightening send caps for weekend slots.</span>
+                    </span>
+                  </div>
+                  <div class="board-footer">
+                    <div class="progress-meter">
+                      <span class="board-label">Readiness</span>
+                      <div class="progress-track"><span class="progress-bar" style="width: 45%"></span></div>
+                    </div>
+                    <span>Creative QA scheduled · Owner: Growth Ops</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="board-stack">
+                <header class="board-label">In-flight</header>
+                <article class="board-card">
+                  <div class="board-card-header">
+                    <div>
+                      <h3 class="board-card-title">Agent Aurora</h3>
+                      <p class="board-card-subtitle">Premium upgrade nurture</p>
+                    </div>
+                    <span class="status-indicator status-inflight">In-flight</span>
+                  </div>
+                  <div class="board-body">
+                    <div>
+                      <span class="board-label">Assignment</span>
+                      <p>Optimise conversion from trial to paid for B2B accounts through multi-channel sequences.</p>
+                    </div>
+                    <div class="decision-grid">
+                      <div class="decision-item">
+                        <span class="decision-label">Offer</span>
+                        <span class="decision-value">Free white-glove onboarding</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Message</span>
+                        <span class="decision-value">Outcome-focused success stories</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Channel</span>
+                        <span class="decision-value">Email + Sales assist</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Time</span>
+                        <span class="decision-value">Triggered by day 10 inactivity</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Frequency</span>
+                        <span class="decision-value">1 daily touch · 4 day taper</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="explanation">
+                    <span>Explanation trail</span>
+                    <span class="tooltip-target" tabindex="0" aria-label="Agent Aurora explanation">
+                      ℹ️
+                      <span class="tooltip-content">RL policy shifted exploration weight to testimonial messaging after uplift of +14% in prior week. Guardrail kept send-time experimentation within 09:00-18:00 recipients' local time.</span>
+                    </span>
+                  </div>
+                  <div class="board-footer">
+                    <div class="progress-meter">
+                      <span class="board-label">Performance</span>
+                      <div class="progress-track"><span class="progress-bar" style="width: 68%"></span></div>
+                    </div>
+                    <span>Conversion lift +9.4% vs control</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="board-stack">
+                <header class="board-label">Completed</header>
+                <article class="board-card">
+                  <div class="board-card-header">
+                    <div>
+                      <h3 class="board-card-title">Agent Helios</h3>
+                      <p class="board-card-subtitle">Winback SMS sprint</p>
+                    </div>
+                    <span class="status-indicator status-completed">Completed</span>
+                  </div>
+                  <div class="board-body">
+                    <div>
+                      <span class="board-label">Assignment</span>
+                      <p>Reactivate churned monthly subscribers via compliant SMS offers and feedback loops.</p>
+                    </div>
+                    <div class="decision-grid">
+                      <div class="decision-item">
+                        <span class="decision-label">Offer</span>
+                        <span class="decision-value">Reactivation voucher ₹299</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Message</span>
+                        <span class="decision-value">Survey + incentive follow-up</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Channel</span>
+                        <span class="decision-value">SMS primary · Email failover</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Time</span>
+                        <span class="decision-value">Weekdays · 5pm IST</span>
+                      </div>
+                      <div class="decision-item">
+                        <span class="decision-label">Frequency</span>
+                        <span class="decision-value">3 touches total</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="explanation">
+                    <span>Explanation trail</span>
+                    <span class="tooltip-target" tabindex="0" aria-label="Agent Helios explanation">
+                      ℹ️
+                      <span class="tooltip-content">Final policy version emphasised feedback loop responses; 72% opted in to post-campaign NPS which will seed next iteration.</span>
+                    </span>
+                  </div>
+                  <div class="board-footer">
+                    <div class="progress-meter">
+                      <span class="board-label">Outcome</span>
+                      <div class="progress-track"><span class="progress-bar" style="width: 100%"></span></div>
+                    </div>
+                    <span>Goal exceeded · +3.1% net revenue</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="agent-subsection" aria-labelledby="rl-heading">
+            <div class="section-header">
+              <div>
+                <h2 id="rl-heading" class="subsection-title">Reinforcement learning insights</h2>
+                <p>Policy health, exploration depth, and reward diagnostics</p>
+              </div>
+            </div>
+            <div class="insight-grid">
+              <article class="board-card">
+                <div class="board-card-header">
+                  <div>
+                    <h3 class="board-card-title">Policy stability</h3>
+                    <p class="board-card-subtitle">Last 7 days · blended agents</p>
+                  </div>
+                  <span class="status-indicator status-inflight">Stable</span>
+                </div>
+                <div class="board-body">
+                  <p>Entropy cooled from 0.68 → 0.44 as reward variance dropped, indicating convergence toward revenue-weighted messaging mixes.</p>
+                  <div class="progress-meter">
+                    <span class="board-label">Exploration quota</span>
+                    <div class="progress-track"><span class="progress-bar" style="width: 52%"></span></div>
+                  </div>
+                </div>
+                <div class="explanation">
+                  <span>Explanation trail</span>
+                  <span class="tooltip-target" tabindex="0" aria-label="Policy stability explanation">
+                    ℹ️
+                    <span class="tooltip-content">Aurora throttled experiments after exploring 18 alternative offers; guardrail floor maintained 20% randomisation for long-tail cohorts.</span>
+                  </span>
+                </div>
+              </article>
+
+              <article class="board-card">
+                <div class="board-card-header">
+                  <div>
+                    <h3 class="board-card-title">Reward diagnostics</h3>
+                    <p class="board-card-subtitle">Attribution window: 48 hours</p>
+                  </div>
+                  <span class="status-indicator status-upcoming">Monitoring</span>
+                </div>
+                <div class="board-body">
+                  <p>Composite reward combining revenue, retention, and opt-out penalties currently trending at 1.14× baseline with minimal regret accumulation.</p>
+                  <div class="progress-meter">
+                    <span class="board-label">Reward vs target</span>
+                    <div class="progress-track"><span class="progress-bar" style="width: 71%"></span></div>
+                  </div>
+                </div>
+                <div class="explanation">
+                  <span>Explanation trail</span>
+                  <span class="tooltip-target" tabindex="0" aria-label="Reward diagnostics explanation">
+                    ℹ️
+                    <span class="tooltip-content">Negative reward from opt-outs decreased 6% after Helios introduced survey-first SMS variant; flagged for continued observation.</span>
+                  </span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="agent-subsection" aria-labelledby="guardrail-heading">
+            <div class="section-header">
+              <div>
+                <h2 id="guardrail-heading" class="subsection-title">Guardrail compliance</h2>
+                <p>Summaries of policy adherence across sensitive dimensions</p>
+              </div>
+            </div>
+            <div class="insight-grid">
+              <article class="board-card">
+                <div class="board-card-header">
+                  <div>
+                    <h3 class="board-card-title">Consent &amp; frequency</h3>
+                    <p class="board-card-subtitle">Global · refreshed hourly</p>
+                  </div>
+                  <span class="status-indicator status-inflight">Compliant</span>
+                </div>
+                <div class="board-body">
+                  <p>Opt-out thresholds respected in 99.2% of journeys; Helios auto-paused two contacts nearing frequency ceiling.</p>
+                  <div class="progress-meter">
+                    <span class="board-label">Cap utilisation</span>
+                    <div class="progress-track"><span class="progress-bar" style="width: 38%"></span></div>
+                  </div>
+                </div>
+                <div class="explanation">
+                  <span>Explanation trail</span>
+                  <span class="tooltip-target" tabindex="0" aria-label="Consent and frequency explanation">
+                    ℹ️
+                    <span class="tooltip-content">Frequency limiter fired after 4th send attempt for dormant users; override request logged for compliance review.</span>
+                  </span>
+                </div>
+              </article>
+
+              <article class="board-card">
+                <div class="board-card-header">
+                  <div>
+                    <h3 class="board-card-title">Content safety</h3>
+                    <p class="board-card-subtitle">Brand tone &amp; sentiment checks</p>
+                  </div>
+                  <span class="status-indicator status-upcoming">Watch</span>
+                </div>
+                <div class="board-body">
+                  <p>Sentiment classifier flagged 3 of 164 variants for overly aggressive urgency. Vega scheduled edits prior to launch.</p>
+                  <div class="progress-meter">
+                    <span class="board-label">Review backlog</span>
+                    <div class="progress-track"><span class="progress-bar" style="width: 24%"></span></div>
+                  </div>
+                </div>
+                <div class="explanation">
+                  <span>Explanation trail</span>
+                  <span class="tooltip-target" tabindex="0" aria-label="Content safety explanation">
+                    ℹ️
+                    <span class="tooltip-content">Language guardrail references ASA compliance library; prompts marketing owner before distribution.</span>
+                  </span>
+                </div>
+              </article>
+
+              <article class="board-card">
+                <div class="board-card-header">
+                  <div>
+                    <h3 class="board-card-title">Data usage</h3>
+                    <p class="board-card-subtitle">PII governance &amp; storage</p>
+                  </div>
+                  <span class="status-indicator status-completed">Audited</span>
+                </div>
+                <div class="board-body">
+                  <p>All agents logged feature access and anonymised decision snapshots to the compliance ledger for the past 14 days.</p>
+                  <div class="progress-meter">
+                    <span class="board-label">Log coverage</span>
+                    <div class="progress-track"><span class="progress-bar" style="width: 88%"></span></div>
+                  </div>
+                </div>
+                <div class="explanation">
+                  <span>Explanation trail</span>
+                  <span class="tooltip-target" tabindex="0" aria-label="Data usage explanation">
+                    ℹ️
+                    <span class="tooltip-content">Zero unresolved alerts; ledger exports ready for SOC2 sampling.</span>
+                  </span>
+                </div>
+              </article>
+            </div>
+          </section>
         </div>
       </section>
     </main>
